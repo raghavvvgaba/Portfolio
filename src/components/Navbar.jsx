@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import './CyberpunkLogo.css';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -24,14 +25,79 @@ const Navbar = () => {
         />
       )}
 
-      {/* Name on top-left corner of the page */}
-      <div className="fixed top-6 left-6 z-50">
-        <span
-          className="text-[#333333] font-bold text-lg uppercase tracking-wide"
-          style={{ fontFamily: '"Arial Black", "Impact", sans-serif', fontWeight: 800 }}
+      {/* Cyberpunk Logo on top-left corner of the page */}
+      <div className="fixed top-6 left-6 z-50 select-none">
+        <svg
+          viewBox="0 0 1800 240"
+          xmlns="http://www.w3.org/2000/svg"
+          className="cp-logo"
+          aria-label="Cyberpunk style logo"
         >
-          Raghav Gaba
-        </span>
+          <defs>
+            {/* Noise for subtle distortion */}
+            <filter id="noise">
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.8"
+                numOctaves="1"
+                result="noise"
+              />
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" />
+            </filter>
+
+            {/* Glitch slices */}
+            <clipPath id="slice-top">
+              <rect x="0" y="0" width="1800" height="80" />
+            </clipPath>
+            <clipPath id="slice-mid">
+              <rect x="0" y="80" width="1800" height="80" />
+            </clipPath>
+            <clipPath id="slice-bot">
+              <rect x="0" y="160" width="1800" height="80" />
+            </clipPath>
+          </defs>
+
+          {/* Base text */}
+          <text
+            x="50%"
+            y="60%"
+            textAnchor="middle"
+            className="cp-text base"
+          >
+            RAGHAV GABA
+          </text>
+
+          {/* Glitch layers */}
+          <text
+            x="50%"
+            y="60%"
+            textAnchor="middle"
+            className="cp-text glitch cyan"
+            clipPath="url(#slice-top)"
+          >
+            RAGHAV GABA
+          </text>
+
+          <text
+            x="50%"
+            y="60%"
+            textAnchor="middle"
+            className="cp-text glitch magenta"
+            clipPath="url(#slice-mid)"
+          >
+            RAGHAV GABA
+          </text>
+
+          <text
+            x="50%"
+            y="60%"
+            textAnchor="middle"
+            className="cp-text glitch yellow"
+            clipPath="url(#slice-bot)"
+          >
+            RAGHAV GABA
+          </text>
+        </svg>
       </div>
 
       {/* Compact Navigation Bar - Top Right */}
@@ -49,7 +115,7 @@ const Navbar = () => {
               {/* Home Button */}
               <a
                 href="#home"
-                className="px-4 -my-2 text-white font-bold text-xs uppercase tracking-wide transition-all duration-200 hover:bg-yellow-500 hover:text-black"
+                className="px-4 py-5 text-white font-bold text-xs uppercase tracking-wide transition-all duration-200 hover:bg-yellow-500 hover:text-black"
                 style={{ fontFamily: '"Arial Black", "Impact", sans-serif', fontWeight: 800 }}
               >
                 Home
@@ -58,7 +124,7 @@ const Navbar = () => {
               {/* Projects Button */}
               <a
                 href="#projects"
-                className="px-4 -my-2 text-white font-bold text-xs uppercase tracking-wide transition-all duration-200 hover:bg-yellow-500 hover:text-black"
+                className="px-4 py-5 text-white font-bold text-xs uppercase tracking-wide transition-all duration-200 hover:bg-yellow-500 hover:text-black"
                 style={{ fontFamily: '"Arial Black", "Impact", sans-serif', fontWeight: 800 }}
               >
                 Projects
@@ -69,7 +135,7 @@ const Navbar = () => {
 
               {/* GitHub Icon */}
               <a
-                href="https://github.com"
+                href="https://github.com/raghavvvgaba"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-yellow-500 transition-all duration-200 hover:bg-yellow-500/10 p-2 rounded"
@@ -81,7 +147,7 @@ const Navbar = () => {
 
               {/* X (Twitter) Icon */}
               <a
-                href="https://x.com"
+                href="https://x.com/raghavvvgaba"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-yellow-500 transition-all duration-200 hover:bg-yellow-500/10 p-2 rounded"

@@ -108,49 +108,7 @@ const Skills = () => {
             </div>
           ))}
         </div>
-
-        {/* Continuous Learning Section */}
-        <div
-          className="mt-12 p-8 text-center relative overflow-hidden"
-          style={{
-            background: 'linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%)',
-            border: '2px solid #FCEE0C'
-          }}
-        >
-          <div className="relative z-10">
-            <h3
-              className="text-2xl font-black text-cp-yellow mb-4 uppercase"
-              style={{ fontFamily: '"Rajdhani", sans-serif' }}
-            >
-              Continuous Learning
-            </h3>
-            <p className="text-gray-300 text-base leading-relaxed max-w-3xl mx-auto">
-              Technology evolves at quantum speed, and so do I. Constantly exploring new frameworks,
-              architectures, and paradigms to stay at the cutting edge of web development.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3 mt-6">
-              <span className="px-3 py-1 text-xs font-semibold text-cp-cyan bg-cp-cyan/10 border border-cp-cyan/30 uppercase">
-                WebAssembly
-              </span>
-              <span className="px-3 py-1 text-xs font-semibold text-cp-cyan bg-cp-cyan/10 border border-cp-cyan/30 uppercase">
-                AI Integration
-              </span>
-              <span className="px-3 py-1 text-xs font-semibold text-cp-cyan bg-cp-cyan/10 border border-cp-cyan/30 uppercase">
-                Edge Computing
-              </span>
-              <span className="px-3 py-1 text-xs font-semibold text-cp-cyan bg-cp-cyan/10 border border-cp-cyan/30 uppercase">
-                JAMstack
-              </span>
-              <span className="px-3 py-1 text-xs font-semibold text-cp-cyan bg-cp-cyan/10 border border-cp-cyan/30 uppercase">
-                Microservices
-              </span>
-            </div>
-          </div>
-
-          {/* Background accent */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-cp-cyan/5 rounded-full blur-3xl"></div>
-        </div>
-      </div>
+</div>
     </section>
   );
 };

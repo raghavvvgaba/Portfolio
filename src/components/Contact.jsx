@@ -13,7 +13,7 @@ const Contact = () => {
     if (!email || !agreed) {
       setToast({
         isVisible: true,
-        message: 'Please enter your email and agree to the terms.',
+        message: 'Please enter your email ',
         type: 'error'
       });
       return;

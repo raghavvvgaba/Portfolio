@@ -83,6 +83,26 @@ export default {
           '60%': { transform: 'skew(-1deg)' },
           '80%': { transform: 'skew(1deg)' }
         },
+        'cyberpunk-move': {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
+        'neon-pulse': {
+          '0%, 100%': { 
+            boxShadow: '0 0 20px rgba(252, 238, 12, 0.4), 0 0 40px rgba(3, 216, 243, 0.3)' 
+          },
+          '50%': { 
+            boxShadow: '0 0 30px rgba(252, 238, 12, 0.6), 0 0 60px rgba(3, 216, 243, 0.5)' 
+          },
+        },
+        'glitch-intense': {
+          '0%, 100%': { transform: 'translate(0)' },
+          '20%': { transform: 'translate(-2px, 2px)' },
+          '40%': { transform: 'translate(-2px, -2px)' },
+          '60%': { transform: 'translate(2px, 2px)' },
+          '80%': { transform: 'translate(2px, -2px)' },
+        },
         underline: { '0%': { width: '0%' }, '100%': { width: '100%' } },
         wiggle: {
           '0%, 100%': { transform: 'rotate(-3deg)' },
@@ -104,16 +124,50 @@ export default {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
+        'perspective-grid': {
+          '0%': { transform: 'perspective(0)' },
+          '100%': { transform: 'perspective(600px)' }
+        },
+        'grid-scroll': {
+          '0%': { backgroundPosition: '0% 0%' },
+          '100%': { backgroundPosition: '0% 100%' }
+        },
+        'neon-flicker': {
+          '0%, 100%': { opacity: '1', filter: 'brightness(1)' },
+          '50%': { opacity: '0.85', filter: 'brightness(1.1)' }
+        },
+        'particle-float': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '25%': { transform: 'translateY(-10px)' },
+          '50%': { transform: 'translateY(-5px)' },
+          '75%': { transform: 'translateY(-10px)' }
+        },
+        'neon-pulse-glow': {
+          '0%, 100%': { 
+            boxShadow: '0 0 40px rgba(3, 216, 243, 0.6), 0 0 80px rgba(3, 216, 243, 0.5)' 
+          },
+          '50%': { 
+            boxShadow: '0 0 30px rgba(3, 216, 243, 0.6), 0 0 60px rgba(3, 216, 243, 0.5)' 
+          }
+        }
       },
       animation: {
         scan: 'scan 1.8s linear infinite',
         glitch: 'glitch .6s ease-in-out both',
+        'cyberpunk-move': 'cyberpunk-move 20s ease infinite',
+        'neon-pulse': 'neon-pulse 3s ease-in-out infinite',
+        'glitch-intense': 'glitch-intense 0.4s ease-in-out both',
         underline: 'underline .25s cubic-bezier(0.2,0.8,0.2,1) forwards',
         wiggle: 'wiggle 0.6s ease-in-out infinite',
         scanline: 'scanline 8s linear infinite',
         'hud-scan': 'hud-scan 3s ease-in-out infinite',
         'telemetry-pulse': 'telemetry-pulse 2s ease-in-out infinite',
         'fade-in': 'fadeIn 0.6s ease-out forwards',
+        'perspective-grid': 'perspective-grid 20s ease-in-out infinite',
+        'grid-scroll': 'grid-scroll 8s linear infinite',
+        'neon-flicker': 'neon-flicker 4s ease-in-out infinite',
+        'particle-float': 'particle-float 6s ease-in-out infinite',
+        'neon-pulse-glow': 'neon-pulse-glow 3s ease-in-out infinite'
       },
       skew: { 6: '6deg' }
     }

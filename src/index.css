@@ -64,3 +64,78 @@
     scroll-margin-top: 64px;
   }
 }
+
+@layer utilities {
+  /* Glitch animations */
+  @keyframes glitch-shine {
+    0%, 100% {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    50% {
+      opacity: 1;
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes glitch-subtle {
+    0%, 100% {
+      transform: translate(0);
+      filter: none;
+    }
+    92% {
+      transform: translate(0);
+      filter: none;
+    }
+    93% {
+      transform: translate(-2px, 1px);
+      filter: hue-rotate(90deg);
+    }
+    94% {
+      transform: translate(2px, -1px);
+    }
+    95% {
+      transform: translate(-1px, 2px);
+      filter: hue-rotate(-90deg);
+    }
+    96% {
+      transform: translate(0);
+      filter: none;
+    }
+  }
+
+  @keyframes glitch-hover {
+    0%, 100% {
+      transform: translate(0);
+    }
+    20% {
+      transform: translate(-3px, 3px);
+    }
+    40% {
+      transform: translate(-3px, -3px);
+    }
+    60% {
+      transform: translate(3px, 3px);
+    }
+    80% {
+      transform: translate(3px, -3px);
+    }
+  }
+
+  @keyframes cyberpunk-move {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-glitch-subtle {
+    animation: glitch-subtle 3s ease-in-out infinite;
+  }
+
+  .animate-glitch-hover:hover {
+    animation: glitch-hover 0.3s ease-in-out;
+  }
+}
