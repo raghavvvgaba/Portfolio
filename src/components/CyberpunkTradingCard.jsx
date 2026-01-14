@@ -1,299 +1,234 @@
-const CyberpunkTradingCard = () => {
+export default function CyberpunkProfileCardSVG() {
   return (
-    <div className="min-h-screen flex items-center justify-center p-8 relative overflow-hidden">
-      <div className="absolute inset-0" style={{ 
-        background: '#000000',
-        backgroundImage: `
-          linear-gradient(135deg, rgba(197, 0, 60, 0.03) 25%, transparent 25%),
-          linear-gradient(225deg, rgba(197, 0, 60, 0.03) 25%, transparent 25%),
-          linear-gradient(45deg, rgba(197, 0, 60, 0.03) 25%, transparent 25%),
-          linear-gradient(315deg, rgba(197, 0, 60, 0.03) 25%, transparent 25%)
-        `,
-        backgroundSize: '40px 40px',
-        backgroundPosition: '0 0, 10px 0, 10px -10px, 0px 10px'
-      }} />
+    <svg width="360" height="520" viewBox="-20 -20 400 560" xmlns="http://www.w3.org/2000/svg">
 
-      <div className="absolute top-20 left-20 text-cp-cyan opacity-30 font-mono text-xs">
-        [SYS:ONLINE]
-      </div>
-      <div className="absolute top-40 right-32 text-cp-red opacity-30 font-mono text-xs">
-        {'{NET:SECURE}'}
-      </div>
-      <div className="absolute bottom-32 left-40 text-cp-yellow opacity-30 font-mono text-xs">
-        [PWR:NORMAL]
-      </div>
-      <div className="absolute bottom-40 right-20 text-cp-cyan opacity-30 font-mono text-xs">
-        {'{DATA:SYNC}'}
-      </div>
+      <defs>
+        {/* --- HARD GLOW (CONTROLLED) --- */}
+        <filter id="edgeGlow">
+          <feGaussianBlur stdDeviation="1.2" />
+        </filter>
 
-      <div className="relative" style={{ 
-        width: '400px',
-        height: '640px'
-      }}>
-        <div 
-          className="absolute inset-0 animate-neon-pulse"
-          style={{
-            boxShadow: '0 0 20px rgba(197, 0, 60, 0.5), inset 0 0 20px rgba(197, 0, 60, 0.3)',
-            clipPath: 'polygon(0 8px, 8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px))'
-          }}
+        {/* --- TEXT GLOW (SUBTLE) --- */}
+        <filter id="textGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="0.8" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+
+        {/* --- CYAN GLOW --- */}
+        <filter id="cyanGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="3" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+
+        {/* --- GRADIENT FOR BLUE POLYGON --- */}
+        <linearGradient id="polygonGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#38e8ff" />
+          <stop offset="35%" stop-color="#000000" />
+        </linearGradient>
+
+        {/* --- DOT GLOW --- */}
+        <filter id="dotGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="1.5" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+
+        {/* --- LIGHT NOISE --- */}
+        <filter id="microNoise">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" />
+          <feComponentTransfer>
+            <feFuncA type="table" tableValues="0 0.12" />
+          </feComponentTransfer>
+        </filter>
+
+        {/* --- PORTRAIT CLIP --- */}
+        <clipPath id="portraitClip">
+          <polygon points="20,18 340,18 340,220 300,258 60,258 20,220" />
+        </clipPath>
+      </defs>
+
+      {/* === BACKGROUND === */}
+      {/* <rect width="360" height="600" fill="#0a0a0d" /> */}
+
+      {/* === PRIMARY CARD BORDER (CLEAN, DEFINED) === */}
+      <polygon
+        points="20,20 60,0 300,0 340,20 340,500 300,520 60,520 20,500"
+        fill="#111216"
+        fillOpacity="0.55"
+        stroke="#ff3b3b"
+        strokeWidth="2"
+      />
+
+      {/* === SECONDARY CHAOS OUTLINES (OFFSET, BROKEN) === */}
+      <polyline
+        points="24,24 64,6 296,6"
+        stroke="#ff3b3b"
+        strokeWidth="1"
+        opacity="0.35"
+        fill="none"
+      />
+      <polyline
+        points="336,40 336,160"
+        stroke="#38e8ff"
+        strokeWidth="1"
+        opacity="0.3"
+        fill="none"
+      />
+      <line x1="22" y1="360" x2="22" y2="410" stroke="#ff3b3b" opacity="0.25" />
+
+      {/* === RANDOM BORDER-ADJACENT MARKS === */}
+      <line x1="70" y1="14" x2="86" y2="10" stroke="#ff3b3b" opacity="0.4" />
+      <line x1="310" y1="512" x2="330" y2="504" stroke="#38e8ff" opacity="0.3" />
+      <circle cx="28" cy="260" r="1" fill="#ff3b3b" opacity="0.5" />
+      <circle cx="332" cy="300" r="1" fill="#38e8ff" opacity="0.5" />
+
+      {/* === PORTRAIT FRAME (CLEAN) - BEHIND BLUE POLYGON === */}
+      <polygon points="20,18 340,18 340,220 300,258 60,258 20,220" fill="#000" stroke="#ff3b3b" strokeWidth="2" />
+      <polygon points="22,20 342,20 342,222 302,260 62,260 22,222" fill="none" stroke="#38e8ff" opacity="0.6" />
+
+      <polygon
+        points="140,-14 220,-14 230,0 220,14 140,14 130,0"
+        fill="#ff3b3b"
+        fillOpacity="0.5"
+        stroke="#ff3b3b"
+        strokeWidth="1.5"
+      />
+      <text x="180" y="4" textAnchor="middle" fontSize="12" fill="white" letterSpacing="2" filter="url(#textGlow)">
+        FIGHTER
+      </text>
+
+      {/* === TITLE (LOCKED, CLEAN, NO JITTER) === */}
+      <text
+        x="180"
+        y="310"
+        textAnchor="middle"
+        fontSize="28"
+        fill="#ff3b3b"
+        letterSpacing="3"
+      >
+        RAGHAV
+      </text>
+
+      {/* === CHAOS IN EMPTY MID ZONE === */}
+      <line x1="60" y1="320" x2="90" y2="314" stroke="#ff3b3b" opacity="0.25" />
+      <line x1="270" y1="342" x2="300" y2="348" stroke="#38e8ff" opacity="0.25" />
+      <circle cx="120" cy="310" r="1" fill="#ff3b3b" opacity="0.4" />
+      <circle cx="240" cy="352" r="1" fill="#38e8ff" opacity="0.4" />
+
+      {/* === ABILITY PANEL === */}
+      <rect x="50" y="330" width="260" height="60" fill="#0f1013" stroke="rgba(255,255,255,0.1)" />
+      <text x="180" y="345" textAnchor="middle" fontSize="11" fill="#b6b6b6">
+        When <tspan fill="#ff3b3b">SAMURAI</tspan> attacks enemy base
+      </text>
+
+      {/* === STATS (CLEAN ALIGNMENT) === */}
+      <rect x="50" y="395" width="12" height="70" fill="#ff9f1c" />
+      <rect x="298" y="395" width="12" height="70" fill="#2dff7a" />
+
+      <text x="56" y="490" textAnchor="middle" fontSize="22" fill="#ff9f1c">5</text>
+      <text x="304" y="490" textAnchor="middle" fontSize="22" fill="#2dff7a">3</text>
+
+      {/* === RED DOTS BELOW IMAGE BLOCK (LEFT SIDE) === */}
+      <circle cx="30" cy="240" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="30" cy="252" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.8" />
+      <circle cx="30" cy="264" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.6" />
+      <circle cx="30" cy="276" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="42" cy="240" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="42" cy="252" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.8" />
+      <circle cx="42" cy="264" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.6" />
+      <circle cx="42" cy="276" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="54" cy="240" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.8" />
+      <circle cx="54" cy="252" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="54" cy="264" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.6" />
+      <circle cx="54" cy="276" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.7" />
+
+      {/* === RED DOTS BELOW IMAGE BLOCK (RIGHT SIDE) === */}
+      <circle cx="310" cy="240" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="310" cy="252" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.8" />
+      <circle cx="310" cy="264" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="310" cy="276" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.6" />
+      <circle cx="298" cy="240" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.6" />
+      <circle cx="298" cy="252" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="298" cy="264" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.8" />
+      <circle cx="298" cy="276" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="286" cy="240" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.8" />
+      <circle cx="286" cy="252" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="286" cy="264" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.6" />
+      <circle cx="286" cy="276" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="274" cy="240" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="274" cy="252" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.8" />
+      <circle cx="274" cy="264" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="274" cy="276" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.6" />
+      <circle cx="262" cy="240" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.8" />
+      <circle cx="262" cy="252" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="262" cy="264" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.6" />
+      <circle cx="262" cy="276" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="250" cy="240" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="250" cy="252" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.8" />
+      <circle cx="250" cy="264" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="250" cy="276" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.6" />
+      <circle cx="238" cy="240" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.6" />
+      <circle cx="238" cy="252" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="238" cy="264" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.8" />
+      <circle cx="238" cy="276" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="226" cy="240" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="226" cy="252" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.8" />
+      <circle cx="226" cy="264" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="226" cy="276" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.6" />
+      <circle cx="214" cy="240" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.6" />
+      <circle cx="214" cy="252" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="214" cy="264" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.8" />
+      <circle cx="214" cy="276" r="1.5" fill="#ff3b3b" filter="url(#dotGlow)" opacity="0.7" />
+
+      {/* === IMAGE === */}
+      <g clipPath="url(#portraitClip)">
+        <rect x="20" y="18" width="320" height="240" fill="#0a0a0d" />
+        <image
+          href="https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BpqtyhD0eYQwituMdac6RB8HsEyFgqz7mXkDb"
+          x="20"
+          y="18"
+          width="320"
+          height="240"
+          preserveAspectRatio="xMidYMid slice"
         />
+        <rect x="20" y="18" width="320" height="240" filter="url(#microNoise)" opacity="0.2" />
+      </g>
 
-        <div 
-          className="relative h-full"
-          style={{
-            background: 'linear-gradient(180deg, #0a0a0a 0%, #111111 50%, #0a0a0a 100%)',
-            clipPath: 'polygon(0 8px, 8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px))',
-            border: '2px solid #C5003C'
-          }}
-        >
-          <div 
-            className="absolute top-8 left-8 right-8 h-0.5"
-            style={{
-              background: 'linear-gradient(90deg, transparent, #03D8F3, transparent)',
-              boxShadow: '0 0 10px #03D8F3'
-            }}
-          />
-          <div 
-            className="absolute bottom-8 left-8 right-8 h-0.5"
-            style={{
-              background: 'linear-gradient(90deg, transparent, #03D8F3, transparent)',
-              boxShadow: '0 0 10px #03D8F3'
-            }}
-          />
+      {/* === TOP HUD (CLEAN) - ON TOP OF IMAGE === */}
+      <polygon
+        points="22,18 86,18 86,31 66,38 66,258 46,258 22,258"
+        fill="url(#polygonGradient)"
+        fillOpacity="0.5"
+        stroke="#38e8ff"
+        strokeWidth="2"
+        filter="url(#cyanGlow)"
+      />
 
-          <div className="absolute top-6 left-6">
-            <div 
-              className="px-3 py-1 border border-cp-cyan bg-black/50"
-              style={{
-                boxShadow: '0 0 10px rgba(3, 216, 243, 0.5), inset 0 0 5px rgba(3, 216, 243, 0.3)'
-              }}
-            >
-              <span className="font-mono text-cp-cyan text-sm font-bold">LVL.99</span>
-            </div>
-          </div>
+      {/* === GLOWING DOTS IN BLUE BOX === */}
+      <circle cx="30" cy="30" r="1.5" fill="#38e8ff" filter="url(#dotGlow)" opacity="0.8" />
+      <circle cx="30" cy="42" r="1.5" fill="#38e8ff" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="30" cy="54" r="1.5" fill="#38e8ff" filter="url(#dotGlow)" opacity="0.6" />
+      <circle cx="42" cy="30" r="1.5" fill="#38e8ff" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="42" cy="42" r="1.5" fill="#38e8ff" filter="url(#dotGlow)" opacity="0.8" />
+      <circle cx="42" cy="54" r="1.5" fill="#38e8ff" filter="url(#dotGlow)" opacity="0.5" />
+      <circle cx="54" cy="30" r="1.5" fill="#38e8ff" filter="url(#dotGlow)" opacity="0.6" />
+      <circle cx="54" cy="42" r="1.5" fill="#38e8ff" filter="url(#dotGlow)" opacity="0.7" />
+      <circle cx="54" cy="54" r="1.5" fill="#38e8ff" filter="url(#dotGlow)" opacity="0.5" />
 
-          <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
-            <div 
-              className="px-6 py-2"
-              style={{
-                background: '#0a0a0a',
-                border: '1px solid #C5003C',
-                borderBottom: '3px solid #C5003C',
-                clipPath: 'polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)'
-              }}
-            >
-              <span className="font-mono text-cp-red text-xs font-bold tracking-widest">ELITE RUNNER</span>
-            </div>
-          </div>
+      <text x="44" y="78" textAnchor="middle" fontSize="28" fill="white">3</text>
 
-          <div className="absolute top-20 left-6 right-6 h-48 relative">
-            <div 
-              className="absolute inset-0"
-              style={{
-                background: 'linear-gradient(180deg, #C5003C 0%, #03D8F3 100%)',
-                clipPath: 'polygon(0 4px, 4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px))',
-                opacity: '0.8'
-              }}
-            />
-            <div 
-              className="absolute inset-0.5 bg-black"
-              style={{
-                clipPath: 'polygon(0 4px, 4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px))'
-              }}
-            />
-            
-            <div className="absolute inset-1 flex items-center justify-center overflow-hidden" style={{
-              clipPath: 'polygon(0 4px, 4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px))'
-            }}>
-              <img
-                src="/src/assets/Profile.jpg"
-                alt="Profile"
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.parentElement.innerHTML = '<div class="w-full h-full bg-black flex items-center justify-center"><span class="text-cp-cyan font-mono text-xs">NO_SIGNAL</span></div>';
-                }}
-              />
-            </div>
+      {/* === EXTRA RANDOM HUD DEBRIS === */}
+      <line x1="90" y1="480" x2="120" y2="468" stroke="#ff3b3b" opacity="0.2" />
+      <line x1="260" y1="460" x2="280" y2="472" stroke="#38e8ff" opacity="0.2" />
 
-            <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-cp-cyan" />
-            <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-cp-cyan" />
-            <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-cp-red" />
-            <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-cp-red" />
-          </div>
-
-          <div className="absolute top-72 left-6 right-6">
-            <div 
-              className="py-4 px-6"
-              style={{
-                background: '#0a0a0a',
-                borderLeft: '4px solid #C5003C',
-                borderRight: '4px solid #C5003C',
-                boxShadow: '0 0 15px rgba(197, 0, 60, 0.3)'
-              }}
-            >
-              <span 
-                className="text-3xl font-black tracking-wider uppercase"
-                style={{ 
-                  fontFamily: '"Orbitron", "Rajdhani", sans-serif',
-                  color: '#C5003C',
-                  textShadow: '0 0 20px rgba(197, 0, 60, 0.8), 0 0 40px rgba(197, 0, 60, 0.4)',
-                  letterSpacing: '0.15em'
-                }}
-              >
-                RAGHAV
-              </span>
-            </div>
-          </div>
-
-          <div className="absolute top-[340px] left-6 right-6">
-            <div 
-              className="p-4 border"
-              style={{
-                background: 'rgba(0, 0, 0, 0.8)',
-                borderColor: '#03D8F3',
-                borderWidth: '1px'
-              }}
-            >
-              <div className="flex items-center space-x-2 mb-3">
-                <div className="w-2 h-2 bg-cp-cyan rounded-full animate-pulse" />
-                <div className="flex-1 h-px bg-gradient-to-r from-cp-cyan to-transparent" style={{ backgroundImage: 'linear-gradient(90deg, #03D8F3 0%, transparent 100%)' }} />
-              </div>
-
-              <div className="space-y-2 text-xs font-mono">
-                <div className="flex justify-between">
-                  <span className="text-gray-400">CLASS:</span>
-                  <span className="text-cp-red font-bold">CYBER RUNNER</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-400">FACTION:</span>
-                  <span className="text-cp-yellow font-bold">NIGHT CITY</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-400">SPECIAL:</span>
-                  <span className="text-cp-cyan font-bold">HACKING</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-400">RANK:</span>
-                  <span className="text-white font-bold">ELITE</span>
-                </div>
-              </div>
-
-              <div className="mt-4 pt-3 border-t border-gray-800">
-                <p className="text-gray-300 text-xs leading-relaxed">
-                  <span className="text-cp-orange font-bold">SKILL:</span> Advanced cybernetic enhancement specialist. 
-                  <span className="text-cp-red font-bold">SPEED</span> and 
-                  <span className="text-cp-cyan font-bold">STEALTH</span> expert. 
-                  Neutralizes threats with <span className="text-cp-yellow font-bold">PRECISION</span>.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="absolute bottom-16 left-6 w-16 h-32">
-            <div 
-              className="h-full border-2 border-cp-orange relative flex items-end justify-center"
-              style={{
-                boxShadow: 'inset 0 0 10px rgba(255, 165, 0, 0.3)',
-                background: 'rgba(0, 0, 0, 0.6)'
-              }}
-            >
-              <div 
-                className="w-full bg-gradient-to-t from-cp-orange to-cp-yellow"
-                style={{ 
-                  height: '85%',
-                  boxShadow: '0 0 15px rgba(255, 165, 0, 0.6)'
-                }}
-              />
-              <div className="absolute inset-0 flex flex-col justify-between py-2">
-                <div className="w-full h-px bg-black/50" />
-                <div className="w-full h-px bg-black/50" />
-                <div className="w-full h-px bg-black/50" />
-                <div className="w-full h-px bg-black/50" />
-              </div>
-              <div 
-                className="absolute -top-8 left-1/2 transform -translate-x-1/2 font-mono font-bold text-xl"
-                style={{ color: '#FFA500', textShadow: '0 0 10px rgba(255, 165, 0, 0.8)' }}
-              >
-                85
-              </div>
-            </div>
-          </div>
-
-          <div className="absolute bottom-16 right-6 w-16 h-32">
-            <div 
-              className="h-full border-2 border-green-500 relative flex items-end justify-center"
-              style={{
-                boxShadow: 'inset 0 0 10px rgba(34, 197, 94, 0.3)',
-                background: 'rgba(0, 0, 0, 0.6)'
-              }}
-            >
-              <div 
-                className="w-full bg-gradient-to-t from-green-600 to-green-400"
-                style={{ 
-                  height: '92%',
-                  boxShadow: '0 0 15px rgba(34, 197, 94, 0.6)'
-                }}
-              />
-              <div className="absolute inset-0 flex flex-col justify-between py-2">
-                <div className="w-full h-px bg-black/50" />
-                <div className="w-full h-px bg-black/50" />
-                <div className="w-full h-px bg-black/50" />
-                <div className="w-full h-px bg-black/50" />
-              </div>
-              <div 
-                className="absolute -top-8 left-1/2 transform -translate-x-1/2 font-mono font-bold text-xl"
-                style={{ color: '#22c55e', textShadow: '0 0 10px rgba(34, 197, 94, 0.8)' }}
-              >
-                92
-              </div>
-            </div>
-          </div>
-
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
-            <div 
-              className="w-12 h-12 flex items-center justify-center"
-              style={{
-                background: '#0a0a0a',
-                border: '2px solid #C5003C',
-                clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
-                boxShadow: '0 0 15px rgba(197, 0, 60, 0.5)'
-              }}
-            >
-              <svg 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="#FCEE0C" 
-                strokeWidth="2"
-                className="w-6 h-6"
-              >
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-              </svg>
-            </div>
-          </div>
-
-          <div className="absolute top-12 right-4 text-cp-cyan opacity-50 font-mono text-xs animate-pulse">
-            ●
-          </div>
-          <div className="absolute top-14 right-4 text-cp-red opacity-50 font-mono text-xs animate-pulse" style={{ animationDelay: '0.5s' }}>
-            ●
-          </div>
-          <div className="absolute top-16 right-4 text-cp-yellow opacity-50 font-mono text-xs animate-pulse" style={{ animationDelay: '1s' }}>
-            ●
-          </div>
-
-          <div className="absolute bottom-0 left-0 w-16 h-16" style={{ 
-            background: 'linear-gradient(135deg, rgba(3, 216, 243, 0.2) 0%, transparent 50%)',
-            clipPath: 'polygon(0 100%, 0 16px, 16px 0, 100% 100%)'
-          }} />
-          <div className="absolute bottom-0 right-0 w-16 h-16" style={{ 
-            background: 'linear-gradient(-135deg, rgba(197, 0, 60, 0.2) 0%, transparent 50%)',
-            clipPath: 'polygon(100% 100%, 100% 16px, 16px 0, 0 100%)'
-          }} />
-        </div>
-      </div>
-    </div>
+    </svg>
   );
-};
-
-export default CyberpunkTradingCard;
+}
