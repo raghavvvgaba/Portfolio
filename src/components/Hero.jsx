@@ -25,7 +25,7 @@ const Hero = () => {
     }
   };
 
-  const VIDEO_URL = "";
+  const VIDEO_URL = "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BdbpeehBTCdpHZF4O2LRJmVeucoy6QDxkEUw8";
   const FALLBACK_IMAGE_URL = "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4B8gBfZ6FodyA1UHK5XvoCfWnst3u6J4zewpME";
 
   return (
@@ -68,18 +68,55 @@ const Hero = () => {
         />
       </div>
 
-      {/* Layer 2: 3D Perspective Grid (z-index: 10) */}
+      {/* Layer 2A: Front Grid (z-index: 10, closest) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none"
            style={{ perspective: '600px' }}>
         <div className="absolute inset-0 w-[200vw] h-[200vw] transform-origin-center"
              style={{
-               transform: 'rotateX(75deg) translateY(25%)',
+               transform: 'rotateX(75deg) translateY(25%) translateZ(0px)',
                backgroundImage: `
-                 linear-gradient(to right, rgba(3, 216, 243, 0.3) 1px, transparent 1px) 0%),
-                 linear-gradient(to bottom, rgba(3, 216, 243, 0.3) 1px, transparent 1px) 0%)
+                 linear-gradient(to right, rgba(3, 216, 243, 0.4) 1px, transparent 1px),
+                 linear-gradient(to bottom, rgba(3, 216, 243, 0.4) 1px, transparent 1px)
                `,
                backgroundSize: '60px 60px',
-               animation: 'grid-scroll 8s linear infinite'
+               animation: 'grid-scroll 6s linear infinite',
+               opacity: 0.5,
+               maskImage: 'radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%)',
+               WebkitMaskImage: 'radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%)'
+             }}
+        />
+      </div>
+
+      {/* Layer 2B: Middle Grid (z-index: 9, mid-depth) */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none"
+           style={{ perspective: '600px' }}>
+        <div className="absolute inset-0 w-[200vw] h-[200vw] transform-origin-center"
+             style={{
+               transform: 'rotateX(75deg) translateY(25%) translateZ(-100px)',
+               backgroundImage: `
+                 linear-gradient(to right, rgba(3, 216, 243, 0.25) 1px, transparent 1px),
+                 linear-gradient(to bottom, rgba(3, 216, 243, 0.25) 1px, transparent 1px)
+               `,
+               backgroundSize: '60px 60px',
+               animation: 'grid-scroll 8s linear infinite',
+               opacity: 0.3
+             }}
+        />
+      </div>
+
+      {/* Layer 2C: Back Grid (z-index: 8, furthest) */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none"
+           style={{ perspective: '600px' }}>
+        <div className="absolute inset-0 w-[200vw] h-[200vw] transform-origin-center"
+             style={{
+               transform: 'rotateX(75deg) translateY(25%) translateZ(-200px)',
+               backgroundImage: `
+                 linear-gradient(to right, rgba(3, 216, 243, 0.12) 1px, transparent 1px),
+                 linear-gradient(to bottom, rgba(3, 216, 243, 0.12) 1px, transparent 1px)
+               `,
+               backgroundSize: '60px 60px',
+               animation: 'grid-scroll 12s linear infinite',
+               opacity: 0.15
              }}
         />
       </div>
@@ -245,12 +282,12 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+      <button onClick={() => scrollToSection('projects')} className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer hover:scale-110 transition-transform duration-300">
         <div className="flex flex-col items-center space-y-2">
           <span className="text-sm font-bold uppercase tracking-widest text-white" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.5)' }}>Scroll</span>
           <div className="w-0.5 h-12 bg-cp-cyan/60 animate-pulse" style={{ boxShadow: '0 0 10px rgba(3, 216, 243, 0.6)' }}></div>
         </div>
-      </div>
+      </button>
     </section>
   );
 };

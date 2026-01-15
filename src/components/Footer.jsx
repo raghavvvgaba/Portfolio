@@ -1,7 +1,25 @@
+import { useState, useEffect } from 'react';
+
 const Footer = () => {
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const currentYear = new Date().getFullYear();
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
 
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <footer
@@ -9,6 +27,31 @@ const Footer = () => {
       style={{ background: '#000000' }}
     >
       <div className="max-w-7xl mx-auto">
+        {/* Scroll to Top Button */}
+        {showScrollTop && (
+          <div className="flex justify-center -mt-4 mb-10">
+            <button
+              onClick={scrollToTop}
+              className="w-12 h-12 flex items-center justify-center bg-black border-2 border-cp-cyan hover:bg-cp-cyan/10 hover:border-cp-yellow transition-all duration-300 transform hover:scale-110"
+              style={{
+                boxShadow: '0 0 20px rgba(3, 216, 243, 0.4), inset 0 0 10px rgba(3, 216, 243, 0.1)',
+                clipPath: 'polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px)'
+              }}
+              aria-label="Scroll to top"
+            >
+              <svg
+                className="w-5 h-5 text-cp-cyan hover:text-cp-yellow transition-colors duration-300"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+              </svg>
+            </button>
+          </div>
+        )}
+
         {/* Social Links */}
         <div className="flex justify-center items-center space-x-6 mb-8">
           <a
