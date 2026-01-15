@@ -32,7 +32,9 @@ const Skills = () => {
     <section
       id="skills"
       className="relative py-20 px-4 sm:px-6 lg:px-8"
-      style={{ background: '#0f0f0f' }}
+      style={{
+        background: 'linear-gradient(135deg, rgba(0,6,14,0.7) 0%, rgba(10,14,26,0.7) 50%, rgba(17,19,24,0.7) 100%)'
+      }}
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
