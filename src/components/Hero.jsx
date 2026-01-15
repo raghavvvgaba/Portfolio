@@ -3,6 +3,8 @@ import CyberpunkTradingCard from './CyberpunkTradingCard';
 
 const Hero = () => {
   const [hasGlitched, setHasGlitched] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [hasVideoError, setHasVideoError] = useState(false);
   const [particles] = useState(
     Array.from({ length: 12 }).map((_, i) => ({
       id: i,
@@ -23,25 +25,35 @@ const Hero = () => {
     }
   };
 
-  // Replace this with your actual UploadThing video URL
-  // You can get this from your UploadThing dashboard or upload response
-  const VIDEO_URL = import.meta.env.VITE_HERO_VIDEO_URL || "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BdbpeehBTCdpHZF4O2LRJmVeucoy6QDxkEUw8";
+  const VIDEO_URL = "";
+  const FALLBACK_IMAGE_URL = "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4B8gBfZ6FodyA1UHK5XvoCfWnst3u6J4zewpME";
 
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Layer 0: Video Background (z-index: 0) */}
+      {/* Layer 0: Video Background with Fallback Image (z-index: 0) */}
       <div className="absolute inset-0 z-0">
+        <img
+          src={FALLBACK_IMAGE_URL}
+          alt="Hero background"
+          fetchpriority="high"
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+            isVideoLoaded && !hasVideoError ? 'opacity-0' : 'opacity-70'
+          }`}
+        />
         <video
           autoPlay
           muted
           loop
           playsInline
           preload="auto"
-          className="w-full h-full object-cover"
-          style={{ opacity: 0.7 }}
+          onLoadedData={() => setIsVideoLoaded(true)}
+          onError={() => setHasVideoError(true)}
+          className={`w-full h-full object-cover transition-opacity duration-500 ${
+            hasVideoError ? 'opacity-0' : 'opacity-0.7'
+          }`}
         >
           <source src={VIDEO_URL} type="video/mp4" />
           Your browser does not support the video tag.

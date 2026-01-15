@@ -197,7 +197,7 @@ export default function CyberpunkProfileCardSVG() {
           y="18"
           width="320"
           height="240"
-          preserveAspectRatio="xMidYMid slice"
+          preserveAspectRatio="xMidYMin slice"
         />
         <rect x="20" y="18" width="320" height="240" filter="url(#microNoise)" opacity="0.2" />
       </g>
