@@ -6,7 +6,6 @@ const ProjectCard = ({ project }) => {
   return (
     <div
       className="relative overflow-hidden flex flex-col rounded-lg"
-      className="relative overflow-hidden flex flex-col rounded-lg"
       style={{
         background: 'linear-gradient(to bottom right, #111827, #000000)',
         border: '1px solid rgba(252, 238, 12, 0.4)',
