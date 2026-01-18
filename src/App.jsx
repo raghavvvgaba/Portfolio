@@ -13,7 +13,7 @@ function App() {
   const heroRef = useRef(null);
 
   const VIDEO_URL = "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BdbpeehBTCdpHZF4O2LRJmVeucoy6QDxkEUw8";
-  const FALLBACK_IMAGE_URL = "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BqlBsvqwAyeZ4YP1CjKkQnIDplaxWVREF7O9d";
+  const FALLBACK_IMAGE_URL = "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BMMAw1lr2RgWsSbxpBZzeoHCcUV0DQEfaJ41F";
 
   useEffect(() => {
     document.documentElement.style.scrollBehavior = 'smooth';
