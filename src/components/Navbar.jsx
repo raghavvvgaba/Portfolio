@@ -110,7 +110,7 @@ const Navbar = () => {
             backgroundColor: 'rgba(0, 0, 0, 0.25)',
           }}
         >
-          <div className="flex items-center justify-start h-14 px-5" style={{ paddingLeft: '40px' }}>
+          <div className="flex items-center justify-start h-14 px-6" style={{ paddingLeft: '40px' }}>
             {/* Right Side - Buttons & Icons */}
             <div className="flex items-center space-x-4">
               {/* Home Button */}
@@ -129,6 +129,15 @@ const Navbar = () => {
                 style={{ fontFamily: '"Arial Black", "Impact", sans-serif', fontWeight: 800 }}
               >
                 Projects
+              </a>
+
+              {/* Contact Button */}
+              <a
+                href="#contact"
+                className="px-4 py-5 text-white font-bold text-xs uppercase tracking-wide transition-all duration-200 hover:bg-[#FCEE0C] hover:text-black"
+                style={{ fontFamily: '"Arial Black", "Impact", sans-serif', fontWeight: 800 }}
+              >
+                Contact
               </a>
 
               {/* Separator */}

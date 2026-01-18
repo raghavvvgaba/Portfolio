@@ -1,80 +1,40 @@
 export const projects = [
   {
+    id: "mosaic",
+    title: "Mosaic",
+    summary: "Block based document editor with realtime collaboration",
+    tech: ["nextjs", "typescript", "appwrite", "openrouter", "realtime api", "yjs"],
+    status: "ACTIVE",
+    image: "",
+    links: {
+      live: "https://mosaic-two-xi.vercel.app/",
+      repo: "https://github.com/raghavvvgaba/Mosaic"
+    },
+    description: "Mosaic is a real-time, block-based document editor built for seamless multi-user collaboration. Powered by Yjs CRDTs and Appwrite, it enables conflict-free editing with live cursors, instant synchronization, secure storage, rich content creation via BlockNote, and AI-assisted writing through OpenRouter."
+  },
+  {
     id: "healsync",
     title: "HealSync",
-    summary: "Medical history management platform with role-based access control and HUD-styled patient dashboard.",
-    tech: ["React", "Firebase", "Tailwind CSS", "Node.js"],
+    summary: "A comprehensive digital health platform enabling patients to create, manage, and securely share complete health profiles with healthcare providers",
+    tech: ["React", "tailwind", "firebase", "Gemini api"],
     status: "ACTIVE",
-    image: "/projects/healsync.svg",
+    image: "",
     links: {
-      live: "https://healsync-demo.vercel.app",
-      repo: "https://github.com/username/healsync"
+      live: "https://heal-sync-psi.vercel.app/",
+      repo: "https://github.com/raghavvvgaba/HealSync"
     },
-    description: "Comprehensive medical records system enabling secure patient data access, appointment scheduling, and real-time health monitoring with advanced encryption."
+    description: "HealSync is a full-stack Electronic Health Record (EHR) system designed with healthcare data security and access control at its core. It implements strict role-based permissions for patients and doctors, secure health data sharing, and protected AI-assisted medical guidance powered by Google Gemini. Built with React and Firebase, the platform ensures real-time data consistency, secure transmission, and a scalable architecture suitable for compliant healthcare workflows."
   },
   {
-    id: "neural-grid",
-    title: "Neural Grid",
-    summary: "AI-powered data visualization platform with real-time neural network training visualization.",
-    tech: ["TypeScript", "D3.js", "TensorFlow.js", "WebGL"],
-    status: "ACTIVE",
-    image: "/projects/healsync.svg",
+    id: "taskly",
+    title: "Taskly",
+    summary: "A modern task management application built with React Native and Expo, featuring real-time sync, user authentication, and beautiful UI",
+    tech: ["react native", "expo", "typescript", "appwrite"],
+    status: "IN_PROGRESS",
+    image: "",
     links: {
-      live: "https://neural-grid-demo.vercel.app",
-      repo: "https://github.com/username/neural-grid"
+      repo: "https://github.com/raghavvvgaba/taskly"
     },
-    description: "Interactive platform for visualizing and training neural networks in real-time, featuring intuitive drag-and-drop model building and performance analytics."
-  },
-  {
-    id: "cypher-chat",
-    title: "CypherChat",
-    summary: "End-to-end encrypted messaging platform with futuristic UI and advanced security features.",
-    tech: ["React", "Socket.io", "WebCrypto", "Express"],
-    status: "MAINTAINED",
-    image: "/projects/healsync.svg",
-    links: {
-      live: "https://cypher-chat-demo.vercel.app",
-      repo: "https://github.com/username/cypher-chat"
-    },
-    description: "Secure messaging application with military-grade encryption, self-destructing messages, and anonymous routing capabilities."
-  },
-  {
-    id: "quantum-cache",
-    title: "Quantum Cache",
-    summary: "High-performance caching system with intelligent predictive algorithms and cyberpunk monitoring dashboard.",
-    tech: ["Go", "Redis", "Docker", "Grafana"],
-    status: "ACTIVE",
-    image: "/projects/healsync.svg",
-    links: {
-      live: "https://quantum-cache-docs.vercel.app",
-      repo: "https://github.com/username/quantum-cache"
-    },
-    description: "Next-generation caching solution using machine learning to predict data access patterns and optimize storage automatically."
-  },
-  {
-    id: "pixel-rebels",
-    title: "Pixel Rebels",
-    summary: "Retro-futuristic NFT marketplace with cyberpunk aesthetics and blockchain integration.",
-    tech: ["Next.js", "Solidity", "IPFS", "Web3.js"],
-    status: "WIP",
-    image: "/projects/healsync.svg",
-    links: {
-      live: "https://pixel-rebels-demo.vercel.app",
-      repo: "https://github.com/username/pixel-rebels"
-    },
-    description: "Decentralized marketplace for digital collectibles featuring unique generative art algorithm and community governance."
-  },
-  {
-    id: "synthwave-sequencer",
-    title: "Synthwave Sequencer",
-    summary: "Browser-based music production suite with retro synthesizer emulations and pattern-based composition.",
-    tech: ["Web Audio API", "Canvas", "React", "Tone.js"],
-    status: "MAINTAINED",
-    image: "/projects/healsync.svg",
-    links: {
-      live: "https://synthwave-sequencer.vercel.app",
-      repo: "https://github.com/username/synthwave-sequencer"
-    },
-    description: "Complete music production environment in your browser, featuring vintage synth sounds and intuitive pattern sequencing."
+    description: "Taskly is a mobile task management app built with React Native and Expo to help users stay organized and productive. It features secure authentication and real-time task syncing powered by Appwrite, along with progress-based insights, task statistics, and polished micro-interactions like haptics and smooth animations."
   }
 ];

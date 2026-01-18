@@ -25,6 +25,8 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   body {
@@ -32,6 +34,8 @@
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   /* Typography */
@@ -137,5 +141,16 @@
 
   .animate-glitch-hover:hover {
     animation: glitch-hover 0.3s ease-in-out;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(0.8);
+    }
   }
 }
