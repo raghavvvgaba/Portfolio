@@ -2,18 +2,19 @@ import { useState } from 'react';
 import Toast from './Toast';
 
 const Contact = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [agreed, setAgreed] = useState(false);
+  const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [toast, setToast] = useState({ isVisible: false, message: '', type: 'info' });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!email || !agreed) {
+    if (!name || !email || !message) {
       setToast({
         isVisible: true,
-        message: 'Please enter your email ',
+        message: 'Please fill in all fields',
         type: 'error'
       });
       return;
@@ -22,20 +23,37 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
 
       setToast({
         isVisible: true,
-        message: 'Successfully subscribed! Stay tuned for updates.',
+        message: 'Message sent successfully!',
         type: 'success'
       });
 
+      setName('');
       setEmail('');
-      setAgreed(false);
+      setMessage('');
     } catch (error) {
       setToast({
         isVisible: true,
-        message: 'Failed to subscribe. Please try again.',
+        message: error.message || 'Failed to send message. Please try again.',
         type: 'error'
       });
     } finally {
@@ -47,80 +65,111 @@ const Contact = () => {
     <>
       <section
         id="contact"
-        className="relative py-20 px-4 sm:px-6 lg:px-8"
+        className="relative py-20 pl-12 pr-4 sm:pl-16 sm:pr-6 lg:pl-20 lg:pr-8"
         style={{ background: '#FCEE0C' }}
       >
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
             <h2
               className="text-4xl md:text-5xl font-black text-black uppercase tracking-wider mb-4"
               style={{ fontFamily: '"Rajdhani", sans-serif' }}
             >
-              STAY CONNECTED
+              Contact Me
             </h2>
             <p className="text-lg text-black max-w-2xl mx-auto">
-              Enter your email address to receive updates on my latest projects and announcements.
+              Send me a message and I'll get back to you as soon as possible.
             </p>
           </div>
 
-          {/* Email Form */}
-          <form onSubmit={handleSubmit} className="max-w-2xl mx-auto">
-            <div className="flex flex-col sm:flex-row gap-4 mb-6">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email address"
-                className="flex-1 px-6 py-4 bg-transparent text-black text-base font-medium border-2 border-black focus:outline-none focus:ring-2 focus:ring-cp-cyan"
+          {/* Contact Form and Info */}
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 justify-items-center">
+            {/* Contact Form - Left */}
+            <form onSubmit={handleSubmit} className="w-full max-w-xl">
+              <div className="flex flex-col gap-4 mb-6">
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Your Name"
+                  className="px-6 py-4 bg-transparent text-black text-base font-medium border-2 border-black focus:outline-none focus:ring-2 focus:ring-cp-cyan"
+                  style={{ fontFamily: '"Rajdhani", sans-serif' }}
+                />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Your Email"
+                  className="px-6 py-4 bg-transparent text-black text-base font-medium border-2 border-black focus:outline-none focus:ring-2 focus:ring-cp-cyan"
+                  style={{ fontFamily: '"Rajdhani", sans-serif' }}
+                />
+                <textarea
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  placeholder="Your Message"
+                  rows="5"
+                  className="px-6 py-4 bg-transparent text-black text-base font-medium border-2 border-black focus:outline-none focus:ring-2 focus:ring-cp-cyan resize-none"
+                  style={{ fontFamily: '"Rajdhani", sans-serif' }}
+                />
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="px-8 py-4 bg-black text-white text-sm font-bold uppercase tracking-widest border-none transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                  style={{
+                    fontFamily: '"Rajdhani", sans-serif',
+                    clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)'
+                  }}
+                >
+                  {isSubmitting ? 'Submitting...' : 'Submit'}
+                </button>
+              </div>
+            </form>
+
+            {/* Contact Info - Right */}
+            <div className="flex flex-col justify-center w-full max-w-md">
+              <h3
+                className="text-2xl font-black text-black uppercase tracking-wider mb-6"
                 style={{ fontFamily: '"Rajdhani", sans-serif' }}
-              />
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="px-8 py-4 bg-black text-white text-sm font-bold uppercase tracking-widest border-none transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
-                style={{
-                  fontFamily: '"Rajdhani", sans-serif',
-                  clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)'
-                }}
               >
-                {isSubmitting ? 'Submitting...' : 'Submit'}
-              </button>
+                Get in Touch
+              </h3>
+              <div className="space-y-6">
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-[#FCEE0C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-sm text-black/70 uppercase tracking-wider mb-1">Email</p>
+                    <a
+                      href="mailto:raghavvvgaba@gmail.com"
+                      className="text-lg font-bold text-black hover:text-black/80 transition-colors"
+                      style={{ fontFamily: '"Rajdhani", sans-serif' }}
+                    >
+                      raghavvvgaba@gmail.com
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-[#FCEE0C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-sm text-black/70 uppercase tracking-wider mb-1">Phone</p>
+                    <a
+                      href="tel:+918979887318"
+                      className="text-lg font-bold text-black hover:text-black/80 transition-colors"
+                      style={{ fontFamily: '"Rajdhani", sans-serif' }}
+                    >
+                      +91 8979887318
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
-
-            {/* Checkbox */}
-            <div className="flex items-start space-x-3 mb-4">
-              <input
-                type="checkbox"
-                id="terms"
-                checked={agreed}
-                onChange={(e) => setAgreed(e.target.checked)}
-                className="mt-1 w-5 h-5 border-2 border-black bg-transparent cursor-pointer"
-              />
-              <label htmlFor="terms" className="text-sm text-black cursor-pointer">
-                I would like to receive news, special offers, and other information about projects and updates.
-              </label>
-            </div>
-
-            {/* Disclaimer */}
-            <p className="text-xs text-black/70 max-w-2xl mx-auto">
-              Your data will be processed in accordance with our Privacy Policy. You can unsubscribe at any time.
-            </p>
-          </form>
-
-          {/* Contact Links */}
-          <div className="mt-16 text-center">
-            <p className="text-sm text-black mb-4 uppercase tracking-wider">Or reach out directly</p>
-            <a
-              href="mailto:contact@raghavgaba.com"
-              className="inline-block px-8 py-3 bg-transparent text-black text-sm font-bold uppercase tracking-widest border-2 border-black transition-all duration-300 hover:scale-105 hover:bg-black hover:text-white"
-              style={{
-                fontFamily: '"Rajdhani", sans-serif',
-                clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)'
-              }}
-            >
-              Send Message
-            </a>
           </div>
         </div>
       </section>
