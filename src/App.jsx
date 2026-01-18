@@ -13,7 +13,7 @@ function App() {
   const heroRef = useRef(null);
 
   const VIDEO_URL = "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BdbpeehBTCdpHZF4O2LRJmVeucoy6QDxkEUw8";
-  const FALLBACK_IMAGE_URL = "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4B8gBfZ6FodyA1UHK5XvoCfWnst3u6J4zewpME";
+  const FALLBACK_IMAGE_URL = "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BqlBsvqwAyeZ4YP1CjKkQnIDplaxWVREF7O9d";
 
   useEffect(() => {
     document.documentElement.style.scrollBehavior = 'smooth';
@@ -49,7 +49,7 @@ function App() {
         <img
           src={FALLBACK_IMAGE_URL}
           alt="Hero background"
-          fetchpriority="high"
+          fetchPriority="high"
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
             isVideoLoaded && !hasVideoError ? 'opacity-0' : 'opacity-70'
           }`}

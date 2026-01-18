@@ -80,7 +80,7 @@ const Skills = () => {
         <defs>
           <filter id="crispGlow" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur stdDeviation="1" result="blur"/>
-            <feFlood flood-color="#FCEE0C" flood-opacity="1" result="glow"/>
+            <feFlood floodColor="#FCEE0C" floodOpacity="1" result="glow"/>
             <feComposite in="glow" in2="blur" operator="in" result="coloredBlur"/>
             <feMerge>
               <feMergeNode in="coloredBlur"/>
@@ -138,7 +138,7 @@ const SkillCard = ({ category, skillsList }) => {
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g filter="url(#crispGlow)" stroke="#FCEE0C" fill="none" strokeWidth="0.4" vector-effect="non-scaling-stroke">
+        <g filter="url(#crispGlow)" stroke="#FCEE0C" fill="none" strokeWidth="0.4" vectorEffect="non-scaling-stroke">
 
           {/* === PRIMARY CORNER BRACKETS (Outer Frame) === */}
 
