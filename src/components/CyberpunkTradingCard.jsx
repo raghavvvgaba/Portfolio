@@ -28,8 +28,8 @@ export default function CyberpunkProfileCardSVG() {
 
         {/* --- GRADIENT FOR BLUE POLYGON --- */}
         <linearGradient id="polygonGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#38e8ff" />
-          <stop offset="35%" stop-color="#000000" />
+          <stop offset="0%" stopColor="#38e8ff" />
+          <stop offset="35%" stopColor="#000000" />
         </linearGradient>
 
         {/* --- DOT GLOW --- */}
@@ -192,7 +192,7 @@ export default function CyberpunkProfileCardSVG() {
       <g clipPath="url(#portraitClip)">
         <rect x="20" y="18" width="320" height="240" fill="#0a0a0d" />
         <image
-          href="https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BpqtyhD0eYQwituMdac6RB8HsEyFgqz7mXkDb"
+          href="https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BqlBsvqwAyeZ4YP1CjKkQnIDplaxWVREF7O9d"
           x="20"
           y="18"
           width="320"
