@@ -5,7 +5,7 @@ export const projects = [
     summary: "Block based document editor with realtime collaboration",
     tech: ["nextjs", "typescript", "appwrite", "openrouter", "realtime api", "yjs"],
     status: "ACTIVE",
-    image: "",
+    image: "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BquaQfzwAyeZ4YP1CjKkQnIDplaxWVREF7O9d",
     links: {
       live: "https://mosaic-two-xi.vercel.app/",
       repo: "https://github.com/raghavvvgaba/Mosaic"
@@ -18,7 +18,7 @@ export const projects = [
     summary: "A comprehensive digital health platform enabling patients to create, manage, and securely share complete health profiles with healthcare providers",
     tech: ["React", "tailwind", "firebase", "Gemini api"],
     status: "ACTIVE",
-    image: "",
+    image: "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BF1eLpcl6OMlxLPwF2tqAy7eJnTbCr3Bo9gI0",
     links: {
       live: "https://heal-sync-psi.vercel.app/",
       repo: "https://github.com/raghavvvgaba/HealSync"
