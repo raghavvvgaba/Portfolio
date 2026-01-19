@@ -22,6 +22,7 @@ const ProjectCard = ({ project }) => {
           <img
             src={project.image}
             alt={project.title}
+            loading="lazy"
             className={`w-full h-full object-cover transition-all duration-500 ${
               isHovered ? 'scale-105' : 'scale-100'
             }`}
@@ -119,7 +120,7 @@ const ProjectCard = ({ project }) => {
           </div>
 
           {/* View Details Button */}
-          <button
+          {/* <button
             className="px-6 py-2 bg-cp-yellow text-black text-xs font-bold uppercase transition-all duration-300 hover:scale-105 hover:bg-cp-cyan hover:text-black"
             style={{
               fontFamily: '"Rajdhani", sans-serif',
@@ -127,7 +128,7 @@ const ProjectCard = ({ project }) => {
             }}
           >
             View Details
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

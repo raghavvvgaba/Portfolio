@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import Toast from './Toast';
 
 const Contact = () => {
@@ -23,23 +24,16 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: name,
+          reply_to: email,
+          message: message,
         },
-        body: JSON.stringify({
-          name,
-          email,
-          message,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to send message');
-      }
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
 
       setToast({
         isVisible: true,
@@ -53,7 +47,7 @@ const Contact = () => {
     } catch (error) {
       setToast({
         isVisible: true,
-        message: error.message || 'Failed to send message. Please try again.',
+        message: 'Failed to send message. Please try again.',
         type: 'error'
       });
     } finally {
@@ -65,7 +59,7 @@ const Contact = () => {
     <>
       <section
         id="contact"
-        className="relative py-20 pl-12 pr-4 sm:pl-16 sm:pr-6 lg:pl-20 lg:pr-8"
+        className="relative py-20 pl-4 pr-4 sm:pl-16 sm:pr-6 lg:pl-20 lg:pr-8"
         style={{ background: '#FCEE0C' }}
       >
         <div className="max-w-6xl mx-auto">
@@ -126,7 +120,7 @@ const Contact = () => {
             </form>
 
             {/* Contact Info - Right */}
-            <div className="flex flex-col justify-center w-full max-w-md">
+            <div className="flex flex-col justify-center w-full max-w-xl md:max-w-md">
               <h3
                 className="text-2xl font-black text-black uppercase tracking-wider mb-6"
                 style={{ fontFamily: '"Rajdhani", sans-serif' }}

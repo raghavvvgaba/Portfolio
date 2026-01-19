@@ -48,7 +48,7 @@ const Skills = () => {
         }}
       />
 
-      <div className="max-w-7xl mx-auto">
+      <div className="relative max-w-7xl mx-auto">
         <div className="relative inline-block">
           <h2
             className="text-4xl md:text-5xl font-black text-white uppercase tracking-wider mb-4"
@@ -64,7 +64,7 @@ const Skills = () => {
             }}
           ></div>
         </div>
-        <p className="text-lg text-gray-400 mt-6 max-w-2xl">
+        <p className="text-lg text-white mt-6 max-w-2xl">
           Technologies I use to craft exceptional digital experiences
         </p>
       </div>
@@ -318,21 +318,56 @@ const SkillCard = ({ category, skillsList }) => {
 };
 
 const SkillItem = ({ skill }) => {
-  const IconComponent = skill.icon;
+  const isImage = typeof skill.icon === 'string';
+  const IconComponent = isImage ? null : skill.icon;
+  const originalColor = IconComponent?.props?.color || '#FFFFFF';
 
   return (
-    <div className="group/item flex flex-col items-center justify-center p-4">
+    <div 
+      className="group/item relative flex flex-col items-center justify-center p-4 rounded-lg"
+      style={{ '--hover-color': originalColor }}
+    >
+      {/* Hover background div */}
+      <div 
+        className="absolute inset-2 rounded-lg opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 pointer-events-none"
+        style={{ backgroundColor: 'rgba(3, 216, 243, 0.1)' }}
+      ></div>
+      
       <div
+        className="relative z-10"
         style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center'
         }}
       >
-        {React.cloneElement(IconComponent, { size: 40 })}
+        {isImage ? (
+          <img
+            src={skill.icon}
+            alt={skill.name}
+            loading="lazy"
+            style={{ 
+              width: '40px',
+              height: '40px',
+              filter: 'drop-shadow(0 0 4px rgba(252, 238, 12, 0.5))',
+              objectFit: 'contain'
+            }}
+            className="group-hover/item:!drop-shadow(0 0 8px var(--hover-color)) transition-all duration-300"
+          />
+        ) : (
+          <div 
+            style={{ 
+              color: '#FFFFFF',
+              filter: 'drop-shadow(0 0 4px rgba(252, 238, 12, 0.5))'
+            }} 
+            className="group-hover/item:!text-[var(--hover-color)] group-hover/item:!drop-shadow(0 0 8px var(--hover-color)) transition-all duration-300"
+          >
+            {React.cloneElement(IconComponent, { size: 40 })}
+          </div>
+        )}
       </div>
       <div
-        className="text-sm font-bold text-white uppercase mt-3 text-center"
+        className="text-sm font-bold text-white uppercase mt-3 text-center relative z-10"
         style={{
           fontFamily: '"Rajdhani", sans-serif',
           letterSpacing: '0.05em'

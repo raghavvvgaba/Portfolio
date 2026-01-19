@@ -101,8 +101,8 @@ export default function CyberpunkProfileCardSVG() {
         stroke="#ff3b3b"
         strokeWidth="1.5"
       />
-      <text x="180" y="4" textAnchor="middle" fontSize="12" fill="white" letterSpacing="2" filter="url(#textGlow)">
-        FIGHTER
+      <text x="180" y="4" textAnchor="middle" fontSize="12" fill="white" letterSpacing="1" filter="url(#textGlow)">
+        DEVELOPER
       </text>
 
       {/* === TITLE (LOCKED, CLEAN, NO JITTER) === */}
@@ -125,8 +125,8 @@ export default function CyberpunkProfileCardSVG() {
 
       {/* === ABILITY PANEL === */}
       <rect x="50" y="330" width="260" height="60" fill="#0f1013" stroke="rgba(255,255,255,0.1)" />
-      <text x="180" y="345" textAnchor="middle" fontSize="11" fill="#b6b6b6">
-        When <tspan fill="#ff3b3b">SAMURAI</tspan> attacks enemy base
+      <text x="180" y="360" textAnchor="middle" dominantBaseline="middle" fontSize="11" fill="#b6b6b6">
+        Design. Code. Execute.
       </text>
 
       {/* === STATS (CLEAN ALIGNMENT) === */}
@@ -223,7 +223,7 @@ export default function CyberpunkProfileCardSVG() {
       <circle cx="54" cy="42" r="1.5" fill="#38e8ff" filter="url(#dotGlow)" opacity="0.7" />
       <circle cx="54" cy="54" r="1.5" fill="#38e8ff" filter="url(#dotGlow)" opacity="0.5" />
 
-      <text x="44" y="78" textAnchor="middle" fontSize="28" fill="white">3</text>
+      <text x="44" y="78" textAnchor="middle" fontSize="28" fill="white">9</text>
 
       {/* === EXTRA RANDOM HUD DEBRIS === */}
       <line x1="90" y1="480" x2="120" y2="468" stroke="#ff3b3b" opacity="0.2" />

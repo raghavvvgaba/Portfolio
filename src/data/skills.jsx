@@ -51,7 +51,7 @@ export const skills = {
     },
     {
       name: "Zustand",
-      icon: <DiGit color="#FFFFFF" />
+      icon: "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BH6FazN8sizyboElxDVRUrNOI4cWwq9aZfGjd"
     }
   ],
   backend: [

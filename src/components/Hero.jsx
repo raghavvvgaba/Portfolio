@@ -5,7 +5,7 @@ import CyberpunkTradingCard from './CyberpunkTradingCard';
 const Hero = forwardRef((props, ref) => {
   const [hasGlitched, setHasGlitched] = useState(false);
   const [particles] = useState(
-    Array.from({ length: 12 }).map((_, i) => ({
+    Array.from({ length: 8 }).map((_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
@@ -20,11 +20,9 @@ const Hero = forwardRef((props, ref) => {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const offset = 250;
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-      const targetPosition = elementPosition - offset;
       window.scrollTo({
-        top: targetPosition,
+        top: elementPosition,
         behavior: 'smooth'
       });
     }
@@ -45,7 +43,7 @@ const Hero = forwardRef((props, ref) => {
       />
 
       {/* Layer 2A: Front Grid (z-index: 10, closest) */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none"
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden sm:block"
            style={{ perspective: '600px' }}>
         <div className="absolute inset-0 w-[100vw] h-[100vh] transform-origin-center"
              style={{
@@ -64,7 +62,7 @@ const Hero = forwardRef((props, ref) => {
       </div>
 
       {/* Layer 2B: Middle Grid (z-index: 9, mid-depth) */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none"
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden sm:block"
            style={{ perspective: '600px' }}>
         <div className="absolute inset-0 w-[100vw] h-[100vh] transform-origin-center"
              style={{
@@ -81,7 +79,7 @@ const Hero = forwardRef((props, ref) => {
       </div>
 
       {/* Layer 2C: Back Grid (z-index: 8, furthest) */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none"
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden sm:block"
            style={{ perspective: '600px' }}>
         <div className="absolute inset-0 w-[100vw] h-[100vh] transform-origin-center"
              style={{
@@ -99,19 +97,19 @@ const Hero = forwardRef((props, ref) => {
 
       {/* Layer 3: Neon Glow Orbs (z-index: 20) */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-[15%] left-[10%] w-32 h-32 rounded-full blur-2xl bg-cp-cyan/10"
+        <div className="absolute top-[15%] left-[10%] w-20 sm:w-24 md:w-32 h-20 sm:h-24 md:h-32 rounded-full blur-2xl bg-cp-cyan/10"
              style={{
                boxShadow: '0 0 40px rgba(3, 216, 243, 0.6), 0 0 80px rgba(3, 216, 243, 0.5)',
                animation: 'neon-flicker 4s ease-in-out infinite'
              }}
         />
-        <div className="absolute bottom-[15%] right-[10%] w-24 h-24 rounded-full blur-xl bg-cp-yellow/10"
+        <div className="absolute bottom-[15%] right-[10%] w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 rounded-full blur-xl bg-cp-yellow/10"
              style={{
                boxShadow: '0 0 30px rgba(252, 238, 12, 0.5), 0 0 60px rgba(252, 238, 12, 0.3)',
                animation: 'neon-flicker 1s ease-in-out infinite reverse'
              }}
         />
-        <div className="absolute top-[40%] right-[15%] w-20 h-20 rounded-full blur-lg bg-cp-red/10"
+        <div className="absolute top-[40%] right-[15%] w-12 sm:w-16 md:w-20 h-12 sm:h-16 md:h-20 rounded-full blur-lg bg-cp-red/10"
              style={{
                boxShadow: '0 0 20px rgba(197, 0, 60, 0.5), 0 0 40px rgba(197, 0, 60, 0.3)',
                animation: 'neon-flicker 6s ease-in-out infinite'
@@ -145,20 +143,22 @@ const Hero = forwardRef((props, ref) => {
       />
 
       {/* Hero Content - Split Layout */}
-      <div className="relative z-10 px-8 py-32 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 px-4 sm:px-6 py-16 sm:py-24 lg:py-32 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Side - Cyberpunk Trading Card */}
           <div
-            className={`order-2 lg:order-1 flex justify-center transition-all duration-700 ${
+            className={`order-1 flex justify-center -ml-20 sm:justify-center lg:justify-start sm:ml-0 transition-all duration-700 ${
               hasGlitched ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{ animationDelay: '0s' }}
           >
-            <CyberpunkTradingCard />
+            <div className="w-[280px] sm:w-[320px] lg:w-[360px]">
+              <CyberpunkTradingCard />
+            </div>
           </div>
 
           {/* Right Side - Text Content */}
-          <div className="order-1 lg:order-2 text-left">
+          <div className="order-2 text-center sm:text-left lg:text-left mr-4 sm:mr-0 lg:mr-0">
             {/* Main Headline */}
             <div
               className={`mb-6 transition-all duration-700 ${
@@ -167,7 +167,7 @@ const Hero = forwardRef((props, ref) => {
               style={{ animationDelay: '0.1s' }}
             >
               <h2
-                className="text-2xl md:text-3xl font-bold text-cp-cyan uppercase tracking-widest mb-2 transition-all"
+                className="text-xl sm:text-2xl md:text-3xl font-bold text-cp-cyan uppercase tracking-widest mb-2 transition-all"
                 style={{
                   fontFamily: '"Rajdhani", sans-serif',
                   fontWeight: 700,
@@ -178,7 +178,7 @@ const Hero = forwardRef((props, ref) => {
                 Hey, this is
               </h2>
               <h1
-                className="text-5xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tight leading-none transition-all"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tight leading-none transition-all"
                 style={{
                   fontFamily: '"Rajdhani", sans-serif',
                   fontWeight: 900,
@@ -191,71 +191,60 @@ const Hero = forwardRef((props, ref) => {
               </h1>
             </div>
 
-            {/* Cyberpunk decorative elements */}
-            <div
-              className={`flex items-center space-x-4 mb-8 transition-all duration-700 delay-200 ${
-                hasGlitched ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-            >
-              <div className="w-16 h-1 bg-cp-cyan transform -rotate-12" style={{ boxShadow: '0 0 10px rgba(3, 216, 243, 0.6)' }}></div>
-              <div className="w-2 h-2 bg-cp-yellow rotate-45" style={{ boxShadow: '0 0 10px rgba(252, 238, 12, 0.8)' }}></div>
-              <div className="w-16 h-1 bg-cp-cyan transform rotate-12" style={{ boxShadow: '0 0 10px rgba(3, 216, 243, 0.6)' }}></div>
-            </div>
-
             {/* Description */}
             <div
-              className={`mb-10 transition-all duration-700 delay-300 ${
+              className={`mb-6 sm:mb-8 lg:mb-10 transition-all duration-700 delay-300 ${
                 hasGlitched ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
             >
-              <p className="text-lg md:text-xl text-white leading-relaxed font-medium mb-3 transition-all" style={{ textShadow: '0 0 20px rgba(0, 0, 0, 0.8)', animationDelay: '0.3s' }}>
+              <p className="text-base sm:text-lg md:text-xl text-white leading-relaxed font-medium mb-2 sm:mb-3 transition-all" style={{ textShadow: '0 0 20px rgba(0, 0, 0, 0.8)', animationDelay: '0.3s' }}>
                 I am a full stack developer
               </p>
-              <p className="text-base md:text-lg text-cp-cyan/80 font-semibold tracking-wide transition-all" style={{ textShadow: '0 0 15px rgba(3, 216, 243, 0.4)', animationDelay: '0.4s' }}>
+              <p className="text-sm sm:text-base md:text-lg text-cp-cyan/80 font-semibold tracking-wide transition-all" style={{ textShadow: '0 0 15px rgba(3, 216, 243, 0.4)', animationDelay: '0.4s' }}>
                 I build scalable and high-impact web applications, focusing on modern UI, real-time systems, and production-ready backend architecture.
               </p>
             </div>
 
             {/* Call to Action Buttons */}
             <div
-              className={`flex flex-col sm:flex-row gap-5 transition-all duration-700 delay-500 ${
+              className={`flex flex-col sm:flex-row gap-3 sm:gap-5 transition-all duration-700 delay-500 ml-6 sm:-ml-8 lg:-ml-28 sm:pl-28 ${
                 hasGlitched ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
             >
                <button
-                 onClick={() => scrollToSection('projects')}
-                 className="group relative px-10 py-3 bg-black text-white text-base font-bold uppercase tracking-wider border-none transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-                 style={{
-                   fontFamily: '"Rajdhani", sans-serif',
-                   clipPath: 'polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)',
-                   boxShadow: '0 0 20px rgba(3, 216, 243, 0.4)'
-                 }}
-               >
-                 <span className="relative z-10">Explore Projects</span>
-                 <div className="absolute inset-0 bg-gradient-to-r from-cp-cyan to-cp-teal opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-               </button>
+                  onClick={() => scrollToSection('projects')}
+                  className="group relative px-6 sm:px-8 lg:px-10 py-2.5 sm:py-3 bg-black text-white text-sm sm:text-base font-bold uppercase tracking-wider border-none transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                  style={{
+                    fontFamily: '"Rajdhani", sans-serif',
+                    clipPath: 'polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)',
+                    boxShadow: '0 0 20px rgba(3, 216, 243, 0.4)'
+                  }}
+                >
+                  <span className="relative z-10">Explore Projects</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-cp-cyan to-cp-teal opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </button>
 
-               <button
-                 onClick={() => scrollToSection('contact')}
-                 className="group relative px-10 py-3 bg-transparent text-white text-base font-bold uppercase tracking-wider border-2 border-cp-cyan transition-all duration-300 hover:scale-105 hover:bg-cp-cyan/10 hover:border-cp-yellow"
-                 style={{
-                   fontFamily: '"Rajdhani", sans-serif',
-                   clipPath: 'polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)',
-                   boxShadow: '0 0 15px rgba(3, 216, 243, 0.3)'
-                 }}
-               >
-                 <span className="relative z-10">Get In Touch</span>
-               </button>
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="group relative px-6 sm:px-8 lg:px-10 py-2.5 sm:py-3 bg-transparent text-white text-sm sm:text-base font-bold uppercase tracking-wider border-2 border-cp-cyan transition-all duration-300 hover:scale-105 hover:bg-cp-cyan/10 hover:border-cp-yellow"
+                  style={{
+                    fontFamily: '"Rajdhani", sans-serif',
+                    clipPath: 'polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)',
+                    boxShadow: '0 0 15px rgba(3, 216, 243, 0.3)'
+                  }}
+                >
+                  <span className="relative z-10">Get In Touch</span>
+                </button>
             </div>
           </div>
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <button onClick={() => scrollToSection('skills')} className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-50 cursor-pointer hover:scale-110 transition-transform duration-300">
+      <button onClick={() => scrollToSection('skills')} className="hidden sm:block absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-50 cursor-pointer hover:scale-110 transition-transform duration-300">
         <div className="flex flex-col items-center space-y-2">
-          <FaMouse size={24} style={{ color: '#03D8F3', textShadow: '0 0 10px rgba(3, 216, 243, 0.6)' }} />
-          <div className="w-0.5 h-12 bg-cp-cyan/60 animate-pulse" style={{ boxShadow: '0 0 10px rgba(3, 216, 243, 0.6)' }}></div>
+          <FaMouse size={20} style={{ color: '#03D8F3', textShadow: '0 0 10px rgba(3, 216, 243, 0.6)' }} />
+          <div className="w-0.5 h-8 sm:h-12 bg-cp-cyan/60 animate-pulse" style={{ boxShadow: '0 0 10px rgba(3, 216, 243, 0.6)' }}></div>
         </div>
       </button>
     </section>

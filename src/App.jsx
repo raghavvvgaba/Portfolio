@@ -12,10 +12,14 @@ function App() {
   const [transformScale, setTransformScale] = useState(1.4);
   const heroRef = useRef(null);
 
-  const VIDEO_URL = "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BdbpeehBTCdpHZF4O2LRJmVeucoy6QDxkEUw8";
+  const VIDEO_URL = "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BBglak2JCNftR5xP7nE8sopbjTvOH9IGYZJXV";
   const FALLBACK_IMAGE_URL = "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BMMAw1lr2RgWsSbxpBZzeoHCcUV0DQEfaJ41F";
 
   useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
     document.documentElement.style.scrollBehavior = 'smooth';
 
     const handleScroll = () => {
@@ -37,7 +41,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen overflow-hidden">
+    <div className="relative min-h-screen w-full bg-black text-white overflow-hidden">
       {/* Fixed Video Background */}
       <div
         className="fixed inset-0 z-0 overflow-hidden transition-transform duration-700 ease-out"
