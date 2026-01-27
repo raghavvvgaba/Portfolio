@@ -41,7 +41,7 @@ function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen w-full bg-black text-white overflow-hidden">
+    <div className="relative min-h-screen w-full bg-black text-white overflow-x-hidden">
       {/* Fixed Video Background */}
       <div
         className="fixed inset-0 z-0 overflow-hidden transition-transform duration-700 ease-out"
