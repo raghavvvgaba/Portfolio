@@ -86,24 +86,24 @@ const Contact = () => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Your Name"
-                  className="px-6 py-4 bg-transparent text-black text-base font-medium border-2 border-black focus:outline-none focus:ring-2 focus:ring-cp-cyan"
-                  style={{ fontFamily: '"Rajdhani", sans-serif' }}
+                  className="px-6 py-4 text-black text-base font-medium border-2 border-black focus:outline-none focus:ring-2 focus:ring-cp-cyan"
+                  style={{ fontFamily: '"Rajdhani", sans-serif', background: '#FEF9E7' }}
                 />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your Email"
-                  className="px-6 py-4 bg-transparent text-black text-base font-medium border-2 border-black focus:outline-none focus:ring-2 focus:ring-cp-cyan"
-                  style={{ fontFamily: '"Rajdhani", sans-serif' }}
+                  className="px-6 py-4 text-black text-base font-medium border-2 border-black focus:outline-none focus:ring-2 focus:ring-cp-cyan"
+                  style={{ fontFamily: '"Rajdhani", sans-serif', background: '#FEF9E7' }}
                 />
                 <textarea
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Your Message"
                   rows="5"
-                  className="px-6 py-4 bg-transparent text-black text-base font-medium border-2 border-black focus:outline-none focus:ring-2 focus:ring-cp-cyan resize-none"
-                  style={{ fontFamily: '"Rajdhani", sans-serif' }}
+                  className="px-6 py-4 text-black text-base font-medium border-2 border-black focus:outline-none focus:ring-2 focus:ring-cp-cyan resize-none"
+                  style={{ fontFamily: '"Rajdhani", sans-serif', background: '#FEF9E7' }}
                 />
                 <button
                   type="submit"
