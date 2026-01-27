@@ -40,14 +40,13 @@ const Navbar = () => {
   return (
     <>
       {/* Vignette overlay covering entire top section when scrolled */}
-      {scrolled && (
-        <div
-          className="fixed top-0 left-0 right-0 h-32 pointer-events-none z-40 transition-opacity duration-300"
-          style={{
-            background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, transparent 100%)',
-          }}
-        />
-      )}
+      <div
+        className="fixed top-0 left-0 right-0 h-32 pointer-events-none z-40 transition-opacity duration-700 ease-out"
+        style={{
+          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, transparent 100%)',
+          opacity: scrolled ? 1 : 0,
+        }}
+      />
 
       {/* Cyberpunk Logo - Responsive positioning */}
       <div className="fixed top-6 left-16 sm:left-6 z-50 select-none">
@@ -190,7 +189,7 @@ const Navbar = () => {
           style={{
             borderColor: '#FCEE0C',
             clipPath: 'polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%)',
-            backgroundColor: 'rgba(0, 0, 0, 0.85)',
+            backgroundColor: 'rgba(0, 0, 0, 0.98)',
           }}
         >
           <div className="flex items-center justify-between px-4 py-3">
