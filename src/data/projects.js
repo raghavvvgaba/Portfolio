@@ -26,15 +26,16 @@ export const projects = [
     description: "HealSync is a full-stack Electronic Health Record (EHR) system designed with healthcare data security and access control at its core. It implements strict role-based permissions for patients and doctors, secure health data sharing, and protected AI-assisted medical guidance powered by Google Gemini. Built with React and Firebase, the platform ensures real-time data consistency, secure transmission, and a scalable architecture suitable for compliant healthcare workflows."
   },
   {
-    id: "taskly",
-    title: "Taskly",
-    summary: "A modern task management application built with React Native and Expo, featuring real-time sync, user authentication, and beautiful UI",
-    tech: ["react native", "expo", "typescript", "appwrite"],
-    status: "IN_PROGRESS",
+    id: "diffscribe",
+    title: "Diffscribe",
+    summary: "AI-powered CLI that turns staged Git diffs into Conventional Commit messages with resilient model fallback.",
+    tech: ["node.js", "typescript", "openrouter", "commander", "inquirer", "execa", "chalk", "clipboardy"],
+    status: "ACTIVE",
     image: "",
     links: {
-      repo: "https://github.com/raghavvvgaba/taskly"
+      repo: "https://github.com/raghavvvgaba/diffscribe",
+      live: "https://www.npmjs.com/package/diffscribe"
     },
-    description: "Taskly is a mobile task management app built with React Native and Expo to help users stay organized and productive. It features secure authentication and real-time task syncing powered by Appwrite, along with progress-based insights, task statistics, and polished micro-interactions like haptics and smooth animations."
+    description: "Diffscribe is a production-ready Node.js CLI tool that parses staged Git diffs and generates Conventional Commit-compliant messages using LLMs. It supports concise and structured output modes, primary and backup model fallback, robust Git process handling with large diff support, and a modular configuration system with validated API inputs and environment variable controls."
   }
 ];
