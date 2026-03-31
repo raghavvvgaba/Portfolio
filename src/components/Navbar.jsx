@@ -1,15 +1,19 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import './CyberpunkLogo.css';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const location = useLocation();
+  const isProjectsPage = location.pathname === '/all-projects';
 
   useEffect(() => {
+    if (isProjectsPage) return;
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
 
-      // Track active section for highlighting
       const sections = ['home', 'projects', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
@@ -29,12 +33,12 @@ const Navbar = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isProjectsPage]);
 
   const navLinks = [
-    { id: 'home', label: 'Home', href: '#home' },
-    { id: 'projects', label: 'Projects', href: '#projects' },
-    { id: 'contact', label: 'Contact', href: '#contact' },
+    { id: 'home', label: 'Home', href: '/#home' },
+    { id: 'projects', label: 'Projects', href: '/#projects' },
+    { id: 'contact', label: 'Contact', href: '/#contact' },
   ];
 
   return (
@@ -211,7 +215,6 @@ const Navbar = () => {
                     }
                   `}
                 >
-                  {/* Active indicator bar */}
                   <div
                     className={`
                       absolute -top-1 left-1/2 -translate-x-1/2
@@ -223,7 +226,6 @@ const Navbar = () => {
                     `}
                   />
 
-                  {/* Label */}
                   <span
                     className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider"
                     style={{ fontFamily: '"Arial Black", "Impact", sans-serif', fontWeight: 800 }}
@@ -231,7 +233,6 @@ const Navbar = () => {
                     {link.label}
                   </span>
 
-                  {/* Active dot indicator */}
                   <div
                     className={`
                       w-1 h-1 rounded-full mt-0.5 sm:mt-1 transition-all duration-300
@@ -284,7 +285,7 @@ const Navbar = () => {
       </nav>
 
       {/* Add padding to bottom of page to prevent content from being hidden behind mobile nav */}
-      <style jsx>{`
+      <style>{`
         @media (max-width: 767px) {
           body {
             padding-bottom: 80px;

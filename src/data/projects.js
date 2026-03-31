@@ -13,12 +13,26 @@ export const projects = [
     description: "Mosaic is a real-time, block-based document editor built for seamless multi-user collaboration. Powered by Yjs CRDTs and Appwrite, it enables conflict-free editing with live cursors, instant synchronization, secure storage, rich content creation via BlockNote, and AI-assisted writing through OpenRouter."
   },
   {
+    id: "chess",
+    title: "Chess",
+    summary: "Real-time multiplayer chess platform with server-authoritative architecture, matchmaking, and Stockfish bot integration",
+    tech: ["React", "TypeScript", "Node.js", "Express", "WebSockets", "Redis", "PostgreSQL", "Better Auth"],
+    status: "ACTIVE",
+    image: "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4B2tpte4USUlZdy5JicOAWoHG73bVCwurEm8IY",
+    links: {
+      repo: "https://github.com/raghavvvgaba/chess",
+      live: "https://chess.raghavgaba.me/"
+    },
+    description: "A production-ready real-time chess platform using server-authoritative architecture for validated moves and consistent game state. Features Redis for in-memory gameplay, PostgreSQL for durability, async flusher with retry-backoff pipeline, robust matchmaking with queue orchestration, private room codes, TTL-based lifecycle management, race-condition-safe validation, authentication, REST APIs, analytics dashboard, social/friend systems, and Stockfish bot integration."
+  },
+  {
     id: "healsync",
     title: "HealSync",
     summary: "A comprehensive digital health platform enabling patients to create, manage, and securely share complete health profiles with healthcare providers",
     tech: ["React", "tailwind", "firebase", "Gemini api"],
     status: "ACTIVE",
-    image: "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BF1eLpcl6OMlxLPwF2tqAy7eJnTbCr3Bo9gI0",
+    image: "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BjSmL0cuy1qRHxFCPGtoarn52fVINs8EKhzuS",
+    imageZoom: 1.05,
     links: {
       live: "https://heal-sync-psi.vercel.app/",
       repo: "https://github.com/raghavvvgaba/HealSync"

@@ -13,25 +13,26 @@ const ProjectCard = ({ project }) => {
       }}
     >
       {/* Image Section (rectangular) */}
-      <div
-        className="relative overflow-hidden cursor-pointer aspect-video"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        {project.image ? (
-          <img
-            src={project.image}
-            alt={project.title}
-            loading="lazy"
-            className={`w-full h-full object-cover transition-all duration-500 ${
-              isHovered ? 'scale-105' : 'scale-100'
-            }`}
-          />
-        ) : (
-          <div className="w-full h-full bg-gray-900 flex items-center justify-center">
-            <span className="text-cp-cyan font-mono text-sm uppercase tracking-wider">{project.title}</span>
-          </div>
-        )}
+        <div
+          className="relative overflow-hidden cursor-pointer aspect-video"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          {project.image ? (
+            <img
+              src={project.image}
+              alt={project.title}
+              loading="lazy"
+              className={`w-full h-full transition-all duration-500 ${
+                isHovered ? 'scale-105' : 'scale-100'
+              }`}
+              style={{ objectFit: 'cover' }}
+            />
+          ) : (
+            <div className="w-full h-full bg-gray-900 flex items-center justify-center">
+              <span className="text-cp-cyan font-mono text-sm uppercase tracking-wider">{project.title}</span>
+            </div>
+          )}
 
         {/* Dark Overlay - Appears on Hover */}
         <div

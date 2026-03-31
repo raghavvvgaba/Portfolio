@@ -22,6 +22,9 @@ import {
 import {
   FaJava
 } from 'react-icons/fa';
+import zustandIconUrl from '../assets/zustand.svg';
+
+const Zustand = () => <img src={zustandIconUrl} alt="Zustand" className="w-10 h-10" />;
 
 export const skills = {
   frontend: [
@@ -51,7 +54,7 @@ export const skills = {
     },
     {
       name: "Zustand",
-      icon: "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BH6FazN8sizyboElxDVRUrNOI4cWwq9aZfGjd"
+      icon: <Zustand />
     }
   ],
   backend: [
