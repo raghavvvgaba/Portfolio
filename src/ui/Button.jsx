@@ -1,38 +1,35 @@
-import React from 'react';
-
-/**
- * Button Component
- * Supports primary, secondary, and submit variants
- */
 const Button = ({
-  children,
   variant = 'primary',
   size = 'md',
   className = '',
   disabled = false,
+  style: externalStyle,
+  children,
   ...props
 }) => {
-  const baseStyles = 'font-semibold text-transform uppercase transition-all duration-200 focus-ring border-none cursor-pointer';
-
-  const variantStyles = {
-    primary: 'bg-primary text-black hover:bg-primary-dark active:scale-95',
-    secondary: 'bg-transparent text-accent-cyan border-2 border-accent-cyan hover:bg-accent-cyan hover:text-black active:scale-95',
-    submit: 'bg-tertiary text-black border border-black hover:bg-primary active:scale-95',
+  const baseStyle = {
+    fontFamily: '"Rajdhani", sans-serif',
+    clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)',
+    ...externalStyle,
   };
 
-  const sizeStyles = {
-    sm: 'px-4 py-2 text-sm',
-    md: 'px-6 py-3 text-base',
-    lg: 'px-8 py-4 text-lg',
+  const variants = {
+    primary: 'bg-black text-white border-none',
+    outline: 'bg-transparent text-white border-2 border-cp-cyan hover:bg-cp-cyan/10 hover:border-cp-yellow',
+  };
+
+  const sizes = {
+    sm: 'px-2 sm:px-4 lg:px-6 py-3 text-sm sm:text-base',
+    md: 'px-8 py-3 text-sm',
+    lg: 'px-8 py-4 text-sm',
   };
 
   const disabledStyles = disabled ? 'opacity-50 cursor-not-allowed' : '';
 
-  const combinedClassName = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${disabledStyles} ${className}`.trim();
-
   return (
     <button
-      className={combinedClassName}
+      className={`font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 ${variants[variant]} ${sizes[size]} ${disabledStyles} ${className}`}
+      style={baseStyle}
       disabled={disabled}
       {...props}
     >

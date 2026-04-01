@@ -55,7 +55,7 @@ const Footer = () => {
         {/* Social Links */}
         <div className="flex justify-center items-center space-x-6 mb-8">
           <a
-            href="https://github.com"
+            href="https://github.com/raghavvvgaba"
             target="_blank"
             rel="noopener noreferrer"
             className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-700 bg-gray-900 text-gray-400 hover:border-cp-cyan hover:text-cp-cyan hover:bg-gray-800 transition-all duration-300 transform hover:scale-110"
@@ -66,7 +66,7 @@ const Footer = () => {
             </svg>
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/raghavvvgaba"
             target="_blank"
             rel="noopener noreferrer"
             className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-700 bg-gray-900 text-gray-400 hover:border-cp-cyan hover:text-cp-cyan hover:bg-gray-800 transition-all duration-300 transform hover:scale-110"
@@ -77,7 +77,7 @@ const Footer = () => {
             </svg>
           </a>
           <a
-            href="https://x.com"
+            href="https://x.com/raghavvvgaba"
             target="_blank"
             rel="noopener noreferrer"
             className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-700 bg-gray-900 text-gray-400 hover:border-cp-cyan hover:text-cp-cyan hover:bg-gray-800 transition-all duration-300 transform hover:scale-110"
@@ -88,7 +88,7 @@ const Footer = () => {
             </svg>
           </a>
           <a
-            href="mailto:contact@example.com"
+            href="mailto:raghavvvgaba@gmail.com"
             className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-700 bg-gray-900 text-gray-400 hover:border-cp-cyan hover:text-cp-cyan hover:bg-gray-800 transition-all duration-300 transform hover:scale-110"
             aria-label="Email"
           >

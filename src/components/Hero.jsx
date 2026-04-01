@@ -1,6 +1,7 @@
 import { useState, useEffect, forwardRef } from 'react';
 import { FaMouse } from 'react-icons/fa';
 import CyberpunkTradingCard from './CyberpunkTradingCard';
+import Button from '../ui/Button';
 
 const Hero = forwardRef((props, ref) => {
   const [hasGlitched, setHasGlitched] = useState(false);
@@ -211,14 +212,11 @@ const Hero = forwardRef((props, ref) => {
                 hasGlitched ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
             >
-                  <button
+                  <Button
                     onClick={() => scrollToSection('projects')}
-                    className="group relative px-2 sm:px-4 lg:px-6 py-3 bg-black text-white text-sm sm:text-base font-bold uppercase tracking-wider border-none transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-                    style={{
-                      fontFamily: '"Rajdhani", sans-serif',
-                      clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)',
-                      boxShadow: '0 0 20px rgba(3, 216, 243, 0.4)'
-                    }}
+                    size="sm"
+                    className="group relative hover:shadow-2xl"
+                    style={{ boxShadow: '0 0 20px rgba(3, 216, 243, 0.4)' }}
                   >
                     <span className="relative z-10 flex items-center gap-1.5 sm:gap-2">
                       <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -227,16 +225,14 @@ const Hero = forwardRef((props, ref) => {
                       Explore Projects
                     </span>
                     <div className="absolute inset-0 bg-gradient-to-r from-cp-cyan to-cp-teal opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </button>
+                  </Button>
 
-                  <button
+                  <Button
+                    variant="outline"
                     onClick={() => scrollToSection('contact')}
-                    className="group relative px-2 sm:px-4 lg:px-6 py-3 bg-transparent text-white text-sm sm:text-base font-bold uppercase tracking-wider border-2 border-cp-cyan transition-all duration-300 hover:scale-105 hover:bg-cp-cyan/10 hover:border-cp-yellow"
-                    style={{
-                      fontFamily: '"Rajdhani", sans-serif',
-                      clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)',
-                      boxShadow: '0 0 15px rgba(3, 216, 243, 0.3)'
-                    }}
+                    size="sm"
+                    className="group relative"
+                    style={{ boxShadow: '0 0 15px rgba(3, 216, 243, 0.3)' }}
                   >
                     <span className="relative z-10 flex items-center gap-1.5 sm:gap-2">
                       <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -244,7 +240,7 @@ const Hero = forwardRef((props, ref) => {
                       </svg>
                       Get In Touch
                     </span>
-                  </button>
+                  </Button>
             </div>
           </div>
         </div>
