@@ -9,6 +9,7 @@ const Contact = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [toast, setToast] = useState({ isVisible: false, message: '', type: 'info' });
 
   const handleSubmit = async (e) => {
@@ -43,6 +44,8 @@ const Contact = () => {
         type: 'success'
       });
 
+      setIsSubmitted(true);
+      setTimeout(() => setIsSubmitted(false), 3000);
       setName('');
       setEmail('');
       setMessage('');
@@ -103,11 +106,11 @@ const Contact = () => {
                 />
                 <Button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || isSubmitted}
                   size="lg"
-                  className="tracking-widest"
+                  className={`tracking-widest ${isSubmitted ? '!bg-green-600' : ''}`}
                 >
-                  {isSubmitting ? 'Submitting...' : 'Submit'}
+                  {isSubmitting ? 'Submitting...' : isSubmitted ? 'Message Sent!' : 'Submit'}
                 </Button>
               </div>
             </form>
