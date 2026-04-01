@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import Toast from './Toast';
+import Input from '../ui/Input';
+import Button from '../ui/Button';
 
 const Contact = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [toast, setToast] = useState({ isVisible: false, message: '', type: 'info' });
 
   const handleSubmit = async (e) => {
@@ -41,6 +44,8 @@ const Contact = () => {
         type: 'success'
       });
 
+      setIsSubmitted(true);
+      setTimeout(() => setIsSubmitted(false), 3000);
       setName('');
       setEmail('');
       setMessage('');
@@ -81,41 +86,32 @@ const Contact = () => {
             {/* Contact Form - Left */}
             <form onSubmit={handleSubmit} className="w-full max-w-xl">
               <div className="flex flex-col gap-4 mb-6">
-                <input
+                <Input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Your Name"
-                  className="px-6 py-4 text-black text-base font-medium border-2 border-black focus:outline-none focus:ring-2 focus:ring-cp-cyan"
-                  style={{ fontFamily: '"Rajdhani", sans-serif', background: '#FEF9E7' }}
                 />
-                <input
+                <Input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your Email"
-                  className="px-6 py-4 text-black text-base font-medium border-2 border-black focus:outline-none focus:ring-2 focus:ring-cp-cyan"
-                  style={{ fontFamily: '"Rajdhani", sans-serif', background: '#FEF9E7' }}
                 />
-                <textarea
+                <Input
+                  type="textarea"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Your Message"
-                  rows="5"
-                  className="px-6 py-4 text-black text-base font-medium border-2 border-black focus:outline-none focus:ring-2 focus:ring-cp-cyan resize-none"
-                  style={{ fontFamily: '"Rajdhani", sans-serif', background: '#FEF9E7' }}
                 />
-                <button
+                <Button
                   type="submit"
-                  disabled={isSubmitting}
-                  className="px-8 py-4 bg-black text-white text-sm font-bold uppercase tracking-widest border-none transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
-                  style={{
-                    fontFamily: '"Rajdhani", sans-serif',
-                    clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)'
-                  }}
+                  disabled={isSubmitting || isSubmitted}
+                  size="lg"
+                  className={`tracking-widest ${isSubmitted ? '!bg-green-600' : ''}`}
                 >
-                  {isSubmitting ? 'Submitting...' : 'Submit'}
-                </button>
+                  {isSubmitting ? 'Submitting...' : isSubmitted ? 'Message Sent!' : 'Submit'}
+                </Button>
               </div>
             </form>
 

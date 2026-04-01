@@ -14,24 +14,24 @@ const Toast = ({ message, type = 'info', isVisible, onClose, autoClose = true })
     switch (type) {
       case 'success':
         return {
-          bg: 'bg-cp-teal/10',
-          border: 'border-cp-teal/40',
-          text: 'text-cp-teal',
-          progress: 'bg-cp-teal'
+          bg: 'bg-green-900/90',
+          border: 'border-green-400/60',
+          text: 'text-green-300',
+          progress: 'bg-green-400'
         };
       case 'error':
         return {
-          bg: 'bg-cp-red/10',
-          border: 'border-cp-red/40',
-          text: 'text-cp-red',
-          progress: 'bg-cp-red'
+          bg: 'bg-red-900/90',
+          border: 'border-red-400/60',
+          text: 'text-red-300',
+          progress: 'bg-red-400'
         };
       case 'warning':
         return {
-          bg: 'bg-cp-yellow/10',
-          border: 'border-cp-yellow/40',
-          text: 'text-cp-yellow',
-          progress: 'bg-cp-yellow'
+          bg: 'bg-yellow-900/90',
+          border: 'border-yellow-400/60',
+          text: 'text-yellow-300',
+          progress: 'bg-yellow-400'
         };
       default:
         return {
