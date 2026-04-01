@@ -2,8 +2,8 @@ export const projects = [
   {
     id: "mosaic",
     title: "Mosaic",
-    summary: "Block based document editor with realtime collaboration",
-    tech: ["nextjs", "typescript", "appwrite", "openrouter", "realtime api", "yjs"],
+    summary: "Block-based note editor with AI-assisted writing",
+    tech: ["nextjs", "typescript", "zustand", "swr", "appwrite", "openrouter"],
     status: "ACTIVE",
     image: "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BquaQfzwAyeZ4YP1CjKkQnIDplaxWVREF7O9d",
     links: {
@@ -15,7 +15,7 @@ export const projects = [
   {
     id: "chess",
     title: "Chess",
-    summary: "Real-time multiplayer chess platform with server-authoritative architecture, matchmaking, and Stockfish bot integration",
+    summary: "Real-time multiplayer chess platform with server-authoritative architecture and matchmaking",
     tech: ["React", "TypeScript", "Node.js", "Express", "WebSockets", "Redis", "PostgreSQL", "Better Auth"],
     status: "ACTIVE",
     image: "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4B2tpte4USUlZdy5JicOAWoHG73bVCwurEm8IY",
@@ -23,7 +23,7 @@ export const projects = [
       repo: "https://github.com/raghavvvgaba/chess",
       live: "https://chess.raghavgaba.me/"
     },
-    description: "A production-ready real-time chess platform using server-authoritative architecture for validated moves and consistent game state. Features Redis for in-memory gameplay, PostgreSQL for durability, async flusher with retry-backoff pipeline, robust matchmaking with queue orchestration, private room codes, TTL-based lifecycle management, race-condition-safe validation, authentication, REST APIs, analytics dashboard, social/friend systems, and Stockfish bot integration."
+    description: "A production-ready real-time chess platform using server-authoritative architecture for validated moves and consistent game state. Features Redis for in-memory gameplay, PostgreSQL for durability, async flusher with retry-backoff pipeline, robust matchmaking with queue orchestration, private room codes, TTL-based lifecycle management, race-condition-safe validation, authentication, REST APIs, analytics dashboard, social/friend systems, and bot integration."
   },
   {
     id: "healsync",
