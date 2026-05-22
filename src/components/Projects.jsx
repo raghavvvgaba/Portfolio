@@ -15,7 +15,7 @@ const Projects = () => {
         <div className="mb-12">
           <h2
             className="text-4xl md:text-5xl font-black text-white uppercase tracking-wider mb-6"
-            style={{ fontFamily: '"Orbitron", sans-serif' }}
+            style={{ fontFamily: '"Rajdhani", sans-serif' }}
           >
             FEATURED PROJECTS
           </h2>
