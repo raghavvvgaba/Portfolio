@@ -20,7 +20,7 @@ const ProjectsPage = () => {
           </div>
           <h2
             className="text-4xl md:text-5xl font-black text-white uppercase tracking-wider"
-            style={{ fontFamily: '"Orbitron", sans-serif' }}
+            style={{ fontFamily: '"Rajdhani", sans-serif' }}
           >
             ALL PROJECTS
           </h2>

@@ -9,32 +9,21 @@ import Footer from './components/Footer';
 import ProjectsPage from './pages/ProjectsPage';
 
 function App() {
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-  const [hasVideoError, setHasVideoError] = useState(false);
   const [transformScale, setTransformScale] = useState(1.4);
   const heroRef = useRef(null);
-
-  const VIDEO_URL = "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BBglak2JCNftR5xP7nE8sopbjTvOH9IGYZJXV";
-  const FALLBACK_IMAGE_URL = "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BMMAw1lr2RgWsSbxpBZzeoHCcUV0DQEfaJ41F";
 
   return (
     <Router>
       <AppContent
-        isVideoLoaded={isVideoLoaded}
-        setIsVideoLoaded={setIsVideoLoaded}
-        hasVideoError={hasVideoError}
-        setHasVideoError={setHasVideoError}
         transformScale={transformScale}
         setTransformScale={setTransformScale}
         heroRef={heroRef}
-        VIDEO_URL={VIDEO_URL}
-        FALLBACK_IMAGE_URL={FALLBACK_IMAGE_URL}
       />
     </Router>
   );
 }
 
-function AppContent({ isVideoLoaded, setIsVideoLoaded, hasVideoError, setHasVideoError, transformScale, setTransformScale, heroRef, VIDEO_URL, FALLBACK_IMAGE_URL }) {
+function AppContent({ transformScale, setTransformScale, heroRef }) {
   const location = useLocation();
   const isProjectsPage = location.pathname === '/all-projects';
 
@@ -80,28 +69,11 @@ function AppContent({ isVideoLoaded, setIsVideoLoaded, hasVideoError, setHasVide
           }}
         >
           <img
-            src={FALLBACK_IMAGE_URL}
+            src="https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BrgEAiYsuzSw9UtI80XMydWj3YcgJHDAoKef4"
             alt="Hero background"
             fetchPriority="high"
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-              isVideoLoaded && !hasVideoError ? 'opacity-0' : 'opacity-70'
-            }`}
+            className="absolute inset-0 w-full h-full object-cover opacity-90"
           />
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            onLoadedData={() => setIsVideoLoaded(true)}
-            onError={() => setHasVideoError(true)}
-            className={`w-full h-full object-cover transition-opacity duration-500 ${
-              hasVideoError ? 'opacity-0' : 'opacity-0.7'
-            }`}
-          >
-            <source src={VIDEO_URL} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
         </div>
       )}
 
