@@ -1,22 +1,36 @@
 import { projects } from '../data/projects';
 import ProjectCard from '../components/ProjectCard';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const ProjectsPage = () => {
+  const navigate = useNavigate();
+
+  const handleBackToHome = (e) => {
+    e.preventDefault();
+    navigate('/');
+    setTimeout(() => {
+      const projectsSection = document.getElementById('projects');
+      if (projectsSection) {
+        projectsSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
   return (
     <div className="min-h-screen w-full bg-black text-white pt-24 pb-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
           <div className="flex items-center gap-4 mb-6">
-            <Link
-              to="/"
+            <a
+              href="/"
+              onClick={handleBackToHome}
               className="text-cp-cyan hover:text-cp-yellow transition-colors duration-200 flex items-center gap-2"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M19 12H5M12 19l-7-7 7-7"/>
               </svg>
               <span className="text-sm uppercase tracking-wide font-semibold">Back to Home</span>
-            </Link>
+            </a>
           </div>
           <h2
             className="text-4xl md:text-5xl font-black text-white uppercase tracking-wider"
