@@ -43,7 +43,7 @@ export const projects = [
     id: "tessera",
     title: "Tessera",
     summary: "AI-powered workspace that helps non-technical users make small, reviewable code contributions to existing repositories and ship them as pull requests",
-    tech: ["React", "TypeScript", "Node.js", "OpenAI", "WebSockets"],
+    tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL/Neon", "E2B", "Clerk"],
     status: "WORK_IN_PROGRESS",
     image: "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BlQ6jBpzPTi1h3o0XjRqx7AuyE4bknHDO8gLv",
     links: {

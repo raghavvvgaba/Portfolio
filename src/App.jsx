@@ -77,7 +77,7 @@ function AppContent({ transformScale, setTransformScale, heroRef }) {
         </div>
       )}
 
-      <Navbar />
+      {!isProjectsPage && <Navbar />}
 
       <main className="relative z-10">
         <Routes>
