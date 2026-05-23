@@ -2,7 +2,7 @@ import { projects } from '../data/projects';
 import ProjectCard from './ProjectCard';
 import { Link } from 'react-router-dom';
 
-const featuredProjects = projects.filter(p => p.id !== 'diffscribe');
+const featuredProjects = projects.filter(p => p.id !== 'diffscribe' && p.id !== 'healsync');
 
 const Projects = () => {
   return (

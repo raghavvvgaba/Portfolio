@@ -1,14 +1,55 @@
-import { useState, useEffect, forwardRef } from 'react';
+import { useState, useEffect, useRef, forwardRef } from 'react';
 import { FaMouse } from 'react-icons/fa';
 import ProfileCard from './ProfileCard';
 import Button from '../ui/Button';
 
 const Hero = forwardRef((props, ref) => {
   const [hasGlitched, setHasGlitched] = useState(false);
+  const [typedText, setTypedText] = useState('');
+  const fullText = ' this is Raghav';
+  const timerRef = useRef(null);
 
   useEffect(() => {
     setTimeout(() => setHasGlitched(true), 500);
   }, []);
+
+  useEffect(() => {
+    if (!hasGlitched) return;
+
+    const TYPE_SPEED = 80;
+    const DELETE_SPEED = 40;
+    const PAUSE_AFTER_TYPE = 2000;
+    const PAUSE_AFTER_DELETE = 600;
+
+    let i = 0;
+    let direction = 'type';
+
+    const tick = () => {
+      if (direction === 'type') {
+        if (i <= fullText.length) {
+          setTypedText(fullText.slice(0, i));
+          i++;
+          timerRef.current = setTimeout(tick, TYPE_SPEED);
+        } else {
+          direction = 'delete';
+          timerRef.current = setTimeout(tick, PAUSE_AFTER_TYPE);
+        }
+      } else {
+        if (i >= 0) {
+          setTypedText(fullText.slice(0, i));
+          i--;
+          timerRef.current = setTimeout(tick, DELETE_SPEED);
+        } else {
+          direction = 'type';
+          timerRef.current = setTimeout(tick, PAUSE_AFTER_DELETE);
+        }
+      }
+    };
+
+    timerRef.current = setTimeout(tick, 200);
+
+    return () => clearTimeout(timerRef.current);
+  }, [hasGlitched]);
  
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -75,7 +116,12 @@ const Hero = forwardRef((props, ref) => {
                   animationDelay: '0.2s'
                 }}
               >
-                Hey, this is Raghav
+                Hey,
+                <span>{typedText}</span>
+                <span
+                  className="inline-block w-1 sm:w-1.5 h-6 sm:h-8 md:h-10 lg:h-12 bg-cp-cyan ml-1 align-middle"
+                  style={{ animation: 'pulse 0.8s ease-in-out infinite' }}
+                />
               </h1>
             </div>
 
