@@ -1,5 +1,17 @@
 export const projects = [
   {
+    id: "tessera",
+    title: "Tessera",
+    summary: "AI-powered workspace that helps non-technical users make small, reviewable code contributions to existing repositories and ship them as pull requests",
+    tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL/Neon", "E2B", "Clerk"],
+    status: "WORK_IN_PROGRESS",
+    image: "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BlQ6jBpzPTi1h3o0XjRqx7AuyE4bknHDO8gLv",
+    links: {
+      repo: "https://github.com/raghavvvgaba/Devin"
+    },
+    description: "Tessera is an AI-powered workspace that helps non-technical users make small, reviewable code contributions to existing repositories and ship them as pull requests."
+  },
+  {
     id: "mosaic",
     title: "Mosaic",
     summary: "Block-based note editor with AI-assisted writing",
@@ -38,18 +50,6 @@ export const projects = [
       repo: "https://github.com/raghavvvgaba/HealSync"
     },
     description: "HealSync is a full-stack Electronic Health Record (EHR) system designed with healthcare data security and access control at its core. It implements strict role-based permissions for patients and doctors, secure health data sharing, and protected AI-assisted medical guidance powered by Google Gemini. Built with React and Firebase, the platform ensures real-time data consistency, secure transmission, and a scalable architecture suitable for compliant healthcare workflows."
-  },
-  {
-    id: "tessera",
-    title: "Tessera",
-    summary: "AI-powered workspace that helps non-technical users make small, reviewable code contributions to existing repositories and ship them as pull requests",
-    tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL/Neon", "E2B", "Clerk"],
-    status: "WORK_IN_PROGRESS",
-    image: "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BlQ6jBpzPTi1h3o0XjRqx7AuyE4bknHDO8gLv",
-    links: {
-      repo: "https://github.com/raghavvvgaba/Devin"
-    },
-    description: "Tessera is an AI-powered workspace that helps non-technical users make small, reviewable code contributions to existing repositories and ship them as pull requests."
   },
   {
     id: "diffscribe",
