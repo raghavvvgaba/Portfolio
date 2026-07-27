@@ -132,7 +132,7 @@ const Hero = forwardRef((props, ref) => {
               }`}
             >
               <p className="text-base sm:text-lg md:text-xl text-white leading-relaxed font-semibold mb-2 sm:mb-3 transition-all" style={{ textShadow: '0 0 20px rgba(0, 0, 0, 0.8)', animationDelay: '0.3s' }}>
-                Full stack developer
+                Full stack developer + AI Developer
               </p>
               <p className="text-base sm:text-lg md:text-xl text-cp-cyan font-semibold tracking-wide transition-all" style={{ animationDelay: '0.4s' }}>
                 I build scalable and high-impact web applications, focusing on modern UI, real-time systems, and production-ready backend architecture.
