@@ -11,7 +11,7 @@ const Projects = () => {
       className="relative py-20 px-4 sm:px-6 lg:px-8"
       style={{ background: '#121212' }}
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className="mb-12">
           <h2
             className="text-4xl md:text-5xl font-black text-white uppercase tracking-wider mb-6"
@@ -22,7 +22,7 @@ const Projects = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-cp-cyan to-transparent"></div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
           {featuredProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
