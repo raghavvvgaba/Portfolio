@@ -39,6 +39,19 @@ export const projects = [
     description: "A production-ready real-time chess platform using server-authoritative architecture for validated moves and consistent game state. Features Redis for in-memory gameplay, PostgreSQL for durability, async flusher with retry-backoff pipeline, robust matchmaking with queue orchestration, private room codes, TTL-based lifecycle management, race-condition-safe validation, authentication, REST APIs, analytics dashboard, social/friend systems, and bot integration."
   },
   {
+    id: "pixelhuddle",
+    title: "PixelHuddle",
+    summary: "A real-time virtual workspace where users explore a shared 2D office, automatically join nearby conversations, and collaborate through voice, video, screen sharing, and private calls.",
+    tech: ["React", "TypeScript", "Phaser", "Socket.IO", "WebRTC", "Express", "MongoDB"],
+    status: "ACTIVE",
+    image: "",
+    links: {
+      live: "https://pixelhuddle.raghavgaba.me/",
+      repo: "https://github.com/raghavvvgaba/pixelhuddle"
+    },
+    description: "A real-time virtual workspace where users explore a shared 2D office, automatically join nearby conversations, and collaborate through voice, video, screen sharing, and private calls."
+  },
+  {
     id: "healsync",
     title: "HealSync",
     summary: "A comprehensive digital health platform enabling patients to create, manage, and securely share complete health profiles with healthcare providers",
