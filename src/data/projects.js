@@ -13,17 +13,17 @@ export const projects = [
     description: "Inlaya is an AI-powered workspace that helps non-technical users make small, reviewable code contributions to existing repositories and ship them as pull requests."
   },
   {
-    id: "mosaic",
-    title: "Mosaic",
-    summary: "Block-based note editor with AI-assisted writing",
-    tech: ["nextjs", "typescript", "zustand", "swr", "appwrite", "openrouter"],
+    id: "pixelhuddle",
+    title: "PixelHuddle",
+    summary: "A real-time virtual workspace where users explore a shared 2D office, automatically join nearby conversations, and collaborate through voice, video, screen sharing, and private calls.",
+    tech: ["React", "TypeScript", "Phaser", "Socket.IO", "WebRTC", "Express", "MongoDB"],
     status: "ACTIVE",
-    image: "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BquaQfzwAyeZ4YP1CjKkQnIDplaxWVREF7O9d",
+    image: "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4Bl2dqIpzPTi1h3o0XjRqx7AuyE4bknHDO8gLv",
     links: {
-      live: "https://mosaic-two-xi.vercel.app/",
-      repo: "https://github.com/raghavvvgaba/Mosaic"
+      live: "https://pixelhuddle.raghavgaba.me/",
+      repo: "https://github.com/raghavvvgaba/pixelhuddle"
     },
-    description: "Mosaic is a real-time, block-based document editor built for seamless multi-user collaboration. Powered by Yjs CRDTs and Appwrite, it enables conflict-free editing with live cursors, instant synchronization, secure storage, rich content creation via BlockNote, and AI-assisted writing through OpenRouter."
+    description: "A real-time virtual workspace where users explore a shared 2D office, automatically join nearby conversations, and collaborate through voice, video, screen sharing, and private calls."
   },
   {
     id: "chess",
@@ -39,17 +39,17 @@ export const projects = [
     description: "A production-ready real-time chess platform using server-authoritative architecture for validated moves and consistent game state. Features Redis for in-memory gameplay, PostgreSQL for durability, async flusher with retry-backoff pipeline, robust matchmaking with queue orchestration, private room codes, TTL-based lifecycle management, race-condition-safe validation, authentication, REST APIs, analytics dashboard, social/friend systems, and bot integration."
   },
   {
-    id: "pixelhuddle",
-    title: "PixelHuddle",
-    summary: "A real-time virtual workspace where users explore a shared 2D office, automatically join nearby conversations, and collaborate through voice, video, screen sharing, and private calls.",
-    tech: ["React", "TypeScript", "Phaser", "Socket.IO", "WebRTC", "Express", "MongoDB"],
+    id: "mosaic",
+    title: "Mosaic",
+    summary: "Block-based note editor with AI-assisted writing",
+    tech: ["nextjs", "typescript", "zustand", "swr", "appwrite", "openrouter"],
     status: "ACTIVE",
-    image: "",
+    image: "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4BquaQfzwAyeZ4YP1CjKkQnIDplaxWVREF7O9d",
     links: {
-      live: "https://pixelhuddle.raghavgaba.me/",
-      repo: "https://github.com/raghavvvgaba/pixelhuddle"
+      live: "https://mosaic-two-xi.vercel.app/",
+      repo: "https://github.com/raghavvvgaba/Mosaic"
     },
-    description: "A real-time virtual workspace where users explore a shared 2D office, automatically join nearby conversations, and collaborate through voice, video, screen sharing, and private calls."
+    description: "Mosaic is a real-time, block-based document editor built for seamless multi-user collaboration. Powered by Yjs CRDTs and Appwrite, it enables conflict-free editing with live cursors, instant synchronization, secure storage, rich content creation via BlockNote, and AI-assisted writing through OpenRouter."
   },
   {
     id: "healsync",
