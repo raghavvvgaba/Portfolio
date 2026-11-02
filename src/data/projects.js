@@ -13,19 +13,6 @@ export const projects = [
     description: "Inlaya is an AI-powered workspace that helps non-technical users make small, reviewable code contributions to existing repositories and ship them as pull requests."
   },
   {
-    id: "pixelhuddle",
-    title: "PixelHuddle",
-    summary: "A real-time virtual workspace where users explore a shared 2D office, automatically join nearby conversations, and collaborate through voice, video, screen sharing, and private calls.",
-    tech: ["React", "TypeScript", "Phaser", "Socket.IO", "WebRTC", "Express", "MongoDB"],
-    status: "ACTIVE",
-    image: "https://rjrvvxgo7y.ufs.sh/f/COht9FMnsV4Bl2dqIpzPTi1h3o0XjRqx7AuyE4bknHDO8gLv",
-    links: {
-      live: "https://pixelhuddle.raghavgaba.me/",
-      repo: "https://github.com/raghavvvgaba/pixelhuddle"
-    },
-    description: "A real-time virtual workspace where users explore a shared 2D office, automatically join nearby conversations, and collaborate through voice, video, screen sharing, and private calls."
-  },
-  {
     id: "chess",
     title: "Chess",
     summary: "Real-time multiplayer chess platform with server-authoritative architecture and matchmaking",
